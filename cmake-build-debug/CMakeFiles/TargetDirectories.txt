@@ -1,0 +1,3 @@
+C:/Users/tenant/CLionProjects/CSCE120/cmake-build-debug/CMakeFiles/CSCE120.dir
+C:/Users/tenant/CLionProjects/CSCE120/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/tenant/CLionProjects/CSCE120/cmake-build-debug/CMakeFiles/rebuild_cache.dir
