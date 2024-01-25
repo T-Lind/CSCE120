@@ -3,4 +3,4 @@ project(CSCE120)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(CSCE120 FindMaxOfThreeNums.cpp)
+add_executable(CSCE120 Factorial.cpp)
