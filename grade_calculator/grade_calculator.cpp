@@ -66,8 +66,6 @@ int main() {
         double score;
         get_category_and_score(line, &category, &score);
 
-        cout << "category: " << category << " score: " << score << endl;
-
         // process the grade entry
         if (category == "exam") {
             examSum += score;
@@ -96,19 +94,40 @@ int main() {
         getline(cin, line);
     }
 
-    double examAverage = examSum / examCount;
-    double hwAverage = hwSum / hwCount;
-    double lwAverage = lwSum / lwCount * 100;
-    double readingAverage = min(readingSum / readingCount + 15, 100.0);
-    double engagementAverage = min(engagementSum / engagementCount + 15, 100.0);
+    double examAverage = 0;
+    double hwAverage = 0;
+    double lwAverage = 0;
+    double readingAverage = 0;
+    double engagementAverage = 0;
 
 
-    cout << "-----Average Computations-----" << endl;
-    cout << "exam average: " << examAverage << endl;
-    cout << "hw average: " << hwAverage << endl;
-    cout << "lw average: " << lwAverage << endl;
-    cout << "readingAverage: " << readingAverage << endl;
-    cout << "engagementAverage: " << engagementAverage << endl;
+    if (finalExamScore == 0)
+        examCount++;
+
+    if (examCount != 0)
+        examAverage = examSum / examCount;
+    else
+        examAverage = 0;
+
+    if (hwCount != 0)
+        hwAverage = hwSum / hwCount;
+    else
+        hwAverage = 0;
+
+    if (lwCount != 0)
+        lwAverage = lwSum / lwCount * 100;
+    else
+        lwAverage = 0;
+
+    if (readingCount != 0)
+        readingAverage = min(readingSum / readingCount + 15, 100.0);
+    else
+        readingAverage = 0;
+
+    if (engagementCount != 0)
+        engagementAverage = min(engagementSum / engagementCount + 15, 100.0);
+    else
+        engagementAverage = 0;
 
 
     if (finalExamScore > examAverage) {
