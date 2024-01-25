@@ -55,18 +55,6 @@ build CMakeFiles/CSCE120.dir/grade_calculator/grade_calculator.cpp.obj: CXX_COMP
   OBJECT_DIR = CMakeFiles\CSCE120.dir
   OBJECT_FILE_DIR = CMakeFiles\CSCE120.dir\grade_calculator
 
-build CMakeFiles/CSCE120.dir/boolean_functions_lab/boolean_functions.cpp.obj: CXX_COMPILER__CSCE120_unscanned_Debug C$:/Users/tenant/CLionProjects/CSCE120/boolean_functions_lab/boolean_functions.cpp || cmake_object_order_depends_target_CSCE120
-  DEP_FILE = CMakeFiles\CSCE120.dir\boolean_functions_lab\boolean_functions.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles\CSCE120.dir
-  OBJECT_FILE_DIR = CMakeFiles\CSCE120.dir\boolean_functions_lab
-
-build CMakeFiles/CSCE120.dir/boolean_functions_lab/boolean.cpp.obj: CXX_COMPILER__CSCE120_unscanned_Debug C$:/Users/tenant/CLionProjects/CSCE120/boolean_functions_lab/boolean.cpp || cmake_object_order_depends_target_CSCE120
-  DEP_FILE = CMakeFiles\CSCE120.dir\boolean_functions_lab\boolean.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles\CSCE120.dir
-  OBJECT_FILE_DIR = CMakeFiles\CSCE120.dir\boolean_functions_lab
-
 
 # =============================================================================
 # Link build statements for EXECUTABLE target CSCE120
@@ -75,7 +63,7 @@ build CMakeFiles/CSCE120.dir/boolean_functions_lab/boolean.cpp.obj: CXX_COMPILER
 #############################################
 # Link the executable CSCE120.exe
 
-build CSCE120.exe: CXX_EXECUTABLE_LINKER__CSCE120_Debug CMakeFiles/CSCE120.dir/grade_calculator/grade_calculator.cpp.obj CMakeFiles/CSCE120.dir/boolean_functions_lab/boolean_functions.cpp.obj CMakeFiles/CSCE120.dir/boolean_functions_lab/boolean.cpp.obj
+build CSCE120.exe: CXX_EXECUTABLE_LINKER__CSCE120_Debug CMakeFiles/CSCE120.dir/grade_calculator/grade_calculator.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\CSCE120.dir

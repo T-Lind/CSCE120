@@ -30,16 +30,32 @@ void print_results(double exam_average,
 // and store the values in the provided variables
 // if line := "exam 95", then category := "exam" and score := 95
 // if the line is invalid, then category := "ignore"
-void get_category_and_score(const string& line,
-                            string* category,
-                            double* score);
+void get_category_and_score(const string &line,
+                            string *category,
+                            double *score);
 
 int main() {
+    using namespace std;
+
     print_instructions();
 
     // ONLY MAKE CHANGES WHERE THERE IS A TODO
 
     // TODO(student): declare and initialize variables that you want
+
+    double finalExamScore = 0;
+
+    double examSum = 0;
+    int examCount = 0;
+    double hwSum = 0;
+    int hwCount = 0;
+    double readingSum = 0;
+    int readingCount = 0;
+    double engagementSum = 0;
+    int engagementCount = 0;
+    double lwSum = 0;
+    int lwCount = 0;
+
 
     string line;
     // read one line from standard input (discards the ending newline character)
@@ -50,20 +66,29 @@ int main() {
         double score;
         get_category_and_score(line, &category, &score);
 
+        cout << "category: " << category << " score: " << score << endl;
+
         // process the grade entry
         if (category == "exam") {
-            // TODO(student): process exam score
+            examSum += score;
+            examCount++;
         } else if (category == "final-exam") {
-            // TODO(student): process final score
+            finalExamScore = score;
+            examSum += score;
+            examCount++;
         } else if (category == "hw") {
-            // TODO(student): process hw score
+            hwSum += score;
+            hwCount++;
         } else if (category == "lw") {
-            // TODO(student): process lw score
+            lwSum += score;
+            lwCount++;
         } else if (category == "reading") {
-            // TODO(student): process reading score
+            readingSum += score;
+            readingCount++;
         } else if (category == "engagement") {
-            // TODO(student): process engagement score
-        }else {
+            engagementSum += score;
+            engagementCount++;
+        } else {
             cout << "ignored invalid input" << endl;
         }
 
@@ -71,22 +96,52 @@ int main() {
         getline(cin, line);
     }
 
-    // TODO(student): compute component averages
-    double exam_average = 0;
-    double hw_average = 0;
-    double lw_average = 0;
-    double reading = 0;
-    double engagement = 0;
+    double examAverage = examSum / examCount;
+    double hwAverage = hwSum / hwCount;
+    double lwAverage = lwSum / lwCount * 100;
+    double readingAverage = min(readingSum / readingCount + 15, 100.0);
+    double engagementAverage = min(engagementSum / engagementCount + 15, 100.0);
 
-    // TODO(student): compute weighted total of components
+
+    cout << "-----Average Computations-----" << endl;
+    cout << "exam average: " << examAverage << endl;
+    cout << "hw average: " << hwAverage << endl;
+    cout << "lw average: " << lwAverage << endl;
+    cout << "readingAverage: " << readingAverage << endl;
+    cout << "engagementAverage: " << engagementAverage << endl;
+
+
+    if (finalExamScore > examAverage) {
+        examAverage = finalExamScore; // replaces the exam average if final is higher
+    }
+
+
     double weighted_total = 0;
 
-    // TODO(student): compute final letter grade
-    char final_letter_grade = 'X';
+    weighted_total += 0.4 * hwAverage;
+    weighted_total += 0.1 * lwAverage;
+    weighted_total += 0.4 * examAverage;
+    weighted_total += 0.05 * readingAverage;
+    weighted_total += 0.05 * engagementAverage;
+
+
+    char final_letter_grade;
+
+    if (weighted_total >= 90) {
+        final_letter_grade = 'A';
+    } else if (weighted_total >= 80) {
+        final_letter_grade = 'B';
+    } else if (weighted_total >= 70) {
+        final_letter_grade = 'C';
+    } else if (weighted_total >= 60) {
+        final_letter_grade = 'D';
+    } else {
+        final_letter_grade = 'F';
+    }
 
     print_results(
-        exam_average, hw_average, lw_average, reading, engagement,
-        weighted_total, final_letter_grade);
+            examAverage, hwAverage, lwAverage, readingAverage, engagementAverage,
+            weighted_total, final_letter_grade);
 }
 
 // These methods are already implemented for you
@@ -100,9 +155,9 @@ void print_instructions() {
 }
 
 void get_category_and_score(
-    const string& line,
-    string* category,
-    double* score) {
+        const string &line,
+        string *category,
+        double *score) {
     // turn the string into an input stream
     std::istringstream sin(line);
 
@@ -122,13 +177,13 @@ void get_category_and_score(
 }
 
 void print_results(
-    double exam_average,
-    double hw_average,
-    double lw_average,
-    double reading,
-    double engagement,
-    double weighted_total,
-    char final_letter_grade) {
+        double exam_average,
+        double hw_average,
+        double lw_average,
+        double reading,
+        double engagement,
+        double weighted_total,
+        char final_letter_grade) {
     cout << "summary:" << endl;
     cout << "      exam average: " << exam_average << endl;
     cout << "        hw average: " << hw_average << endl;
