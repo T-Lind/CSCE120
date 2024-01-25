@@ -87,7 +87,6 @@ bool booleanLogic3(bool x, bool y, bool z) {
 
 // this function counts the letters in str
 unsigned int countLetters(std::string str) {
-    // TODO: fix error
     cout << "--- count Letters ---" << endl;
 
     unsigned int count = 0;
@@ -118,14 +117,10 @@ void setAssignments(bool &w, bool &x, bool &y, bool &z)
 
     w = true;
     x = true;
-    y = true;
+    y = false;
     z = false;
 
-    cout << "w = " << boolalpha << w << endl;
-    cout << "x = " << boolalpha << x << endl;
-    cout << "y = " << boolalpha << y << endl;
-    cout << "z = " << boolalpha << z << endl;
-
+    // todo: figure out why this isn't a good answer
 }
 
 
