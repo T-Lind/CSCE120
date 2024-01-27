@@ -13,46 +13,60 @@ bool is_valid_range(int a, int b) {
 
     return true;
 }
+/*
+ * Helper function for computing powers
+ */
+double pow(double base, int exponent) {
+    double result = 1;
+    for (int i = 0; i < exponent; i++) {
+        result *= base;
+    }
+    return result;
+}
 
 char classify_mv_range_type(int number) {
-    // TODO(student): return 'M' if number has /\/\... pattern,
-    // return 'V' if number has \/\/ pattern, and return 'N' otherwise
-    int thousands = number / 1000;
-    int hundreds = (number / 100) % 10;
-    int tens = (number / 10) % 10;
-    int ones = number % 10;
-
-    // number isn't necessarily 4 digits.
-    /*
-     * An n-digit integer, for n >= 2, with digits d1d2d3d4…dn models:
-     * a mountain range if it has the pattern /\/..., that is, d1 < d2  d2,> d3, d3 < d4, etc.
-     * a valley range if it has the pattern \/\..., that is d1 > d2, d2 < d3, d3 > d4, etc.
-     */
-
-    if (thousands > 0) {
-        if (thousands > hundreds && hundreds < tens && tens > ones) {
-            return 'V';
-
-        } else if (thousands < hundreds && hundreds > tens && tens < ones) {
-            return 'M';
+    int temp = number;
+    int numLength = 0;
+    while (temp >= 10) {
+        temp /= 10;
+        numLength++;
+    }
+    // yes this is super inefficient, but it's the first solution I thought of okay
+    bool valley = true;
+    bool mountain = true;
+    int currentDigit;
+    int nextDigit;
+    int currentNum = number;
+    for (int i = 0; i < numLength; i++) {
+        currentDigit = currentNum / (int) pow(10, numLength - i);
+        nextDigit = (currentNum / (int) pow(10, numLength - i - 1)) % 10;
+        currentNum -= currentDigit * (int) pow(10, numLength - i);
+        if (i % 2 == 0) {
+            if (currentDigit <= nextDigit) {
+                valley = false;
+            }
+            if (currentDigit >= nextDigit) {
+                mountain = false;
+            }
+        } else {
+            if (currentDigit >= nextDigit) {
+                valley = false;
+            }
+            if (currentDigit <= nextDigit) {
+                mountain = false;
+            }
         }
     }
-    else if (hundreds > 0) {
-        if (hundreds > tens && tens < ones) {
-            return 'V';
-        } else if (ones < tens && tens > hundreds) {
-            return 'M';
-        }
+    if (valley) {
+        return 'V';
     }
-    else if (tens > 0) {
-        if (tens > ones) {
-            return 'V';
-        } else if (tens < ones) {
-            return 'M';
-        }
+    if (mountain) {
+        return 'M';
     }
+
 
     return 'N';
+
 }
 
 void count_valid_mv_numbers(int a, int b) {
@@ -69,6 +83,6 @@ void count_valid_mv_numbers(int a, int b) {
             valleyCount++;
         }
     }
-    cout << "There are " << mountainCount << " mountain ranges, " << valleyCount << " valley ranges between " << a
-         << " and " << b << endl;
+    cout << "There are " << mountainCount << " mountain ranges and " << valleyCount << " valley ranges between " << a
+         << " and " << b << "." << endl;
 }
