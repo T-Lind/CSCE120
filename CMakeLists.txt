@@ -3,6 +3,6 @@ project(CSCE120)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(CSCE120 hw_mountains_valleys/mountains_valleys.cpp
-        hw_mountains_valleys/functions.h
-        hw_mountains_valleys/functions.cpp)
+add_executable(CSCE120
+        c_string/main.cpp
+        c_string/cstring.cpp)
