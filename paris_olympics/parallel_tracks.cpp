@@ -13,7 +13,7 @@ using std::cin, std::cout, std::endl;
 void prep_double_array(double ary[])
 // making sure all values within the array are set to 0.0;
 {
-    for (int i = 0; i < SIZE; i++) {
+    for (unsigned int i = 0; i < SIZE; i++) {
         ary[i] = 0.0;
     }
 }
@@ -26,7 +26,7 @@ void prep_double_array(double ary[])
 void prep_unsigned_int_array(unsigned int ary[])
 // making sure all values within the array are set to 0;
 {
-    for (int i = 0; i < SIZE; i++) {
+    for (unsigned int i = 0; i < SIZE; i++) {
         ary[i] = 0;
     }
 }
@@ -39,7 +39,7 @@ void prep_unsigned_int_array(unsigned int ary[])
 void prep_string_array(char ary[][STRING_SIZE])
 // making sure all values within the array are set to "N/A";
 {
-    for (int i = 0; i < SIZE; i++) {
+    for (unsigned int i = 0; i < SIZE; i++) {
         strcpy(ary[i], "N/A");
     }
 }
@@ -50,9 +50,9 @@ void prep_string_array(char ary[][STRING_SIZE])
 // PostCondition: whitespace has been removed from beginning and end of string
 //---------------------------------------------------------
 void trim(char str[STRING_SIZE]) {
-    int len = strlen(str);
+    unsigned int len = strlen(str);
     int start = 0;
-    int end = len - 1;
+    unsigned int end = len - 1;
     while (isspace(str[start]) && start < len) {
         start++;
     }
@@ -76,7 +76,7 @@ void trim(char str[STRING_SIZE]) {
 //---------------------------------------------------------
 bool get_runner_data(double timeArray[], char countryArray[][STRING_SIZE],
                      unsigned int numberArray[], char lastnameArray[][STRING_SIZE]) {
-    for (int i = 0; i < SIZE; i++) {
+    for (unsigned int i = 0; i < SIZE; i++) {
         cin >> timeArray[i] >> countryArray[i] >> numberArray[i] >> lastnameArray[i];
         if (cin.fail()) {
             return false;
