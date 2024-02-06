@@ -90,7 +90,7 @@ bool get_runner_data(double timeArray[], char countryArray[][STRING_SIZE],
         }
         cin.getline(lastname, STRING_SIZE);
 
-        trim(country)
+        trim(country);
 
         if (time <= 0.0)
             return false;
