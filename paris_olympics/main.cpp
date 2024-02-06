@@ -31,14 +31,12 @@ using std::cin;
 using std::cout;
 using std::endl;
 
-#define N_LANES 9
-
 int main() {
-    double time[N_LANES];
-    char country[N_LANES][STRING_SIZE];
-    unsigned int number[N_LANES];
-    char lastname[N_LANES][STRING_SIZE];
-    unsigned int rank[N_LANES];
+    double time[SIZE];
+    char country[SIZE][STRING_SIZE];
+    unsigned int number[SIZE];
+    char lastname[SIZE][STRING_SIZE];
+    unsigned int rank[SIZE];
 
     prep_double_array(time);
     prep_unsigned_int_array(number);

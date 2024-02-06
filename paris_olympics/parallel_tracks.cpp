@@ -51,7 +51,7 @@ void prep_string_array(char ary[][STRING_SIZE])
 //---------------------------------------------------------
 void trim(char str[STRING_SIZE]) {
     unsigned int len = strlen(str);
-    int start = 0;
+    unsigned int start = 0;
     unsigned int end = len - 1;
     while (isspace(str[start]) && start < len) {
         start++;
@@ -62,7 +62,7 @@ void trim(char str[STRING_SIZE]) {
     if (end < start) {
         str[0] = '\0';
     } else {
-        for (int i = start; i <= end; i++) {
+        for (unsigned int i = start; i <= end; i++) {
             str[i - start] = str[i];
         }
         str[end - start + 1] = '\0';
@@ -77,12 +77,51 @@ void trim(char str[STRING_SIZE]) {
 bool get_runner_data(double timeArray[], char countryArray[][STRING_SIZE],
                      unsigned int numberArray[], char lastnameArray[][STRING_SIZE]) {
     for (unsigned int i = 0; i < SIZE; i++) {
-        cin >> timeArray[i] >> countryArray[i] >> numberArray[i] >> lastnameArray[i];
+        // temp vars
+        double time;
+        char country[STRING_SIZE];
+        unsigned int number;
+        char lastname[STRING_SIZE];
+
+        cin >> time >> country >> number;
+        // get the rest of the line and put it in lastname
         if (cin.fail()) {
             return false;
         }
-        trim(countryArray[i]);
-        trim(lastnameArray[i]);
+        cin.getline(lastname, STRING_SIZE);
+
+        trim(country)
+        trim(lastname);
+
+        if (time <= 0.0)
+            return false;
+
+        if (strlen(country) != 3)
+            return false;
+
+        for (unsigned int j = 0; j < strlen(country); j++)
+        {
+            if (country[j] < 'A' || country[j] > 'Z')
+                return false;
+        }
+
+        if (number > 99)
+            return false;
+
+        if (strlen(lastname) < 2)
+            return false;
+
+        for (unsigned int j = 0; j < strlen(lastname); j++)
+        {
+            if ((lastname[j] < 'A' || lastname[j] > 'Z') && (lastname[j] < 'a' || lastname[j] > 'z') && lastname[j] != ' ')
+                return false;
+        }
+
+        timeArray[i] = time;
+        strcpy(countryArray[i], country);
+        numberArray[i] = number;
+        strcpy(lastnameArray[i], lastname);
+
 
     }
     return true;
