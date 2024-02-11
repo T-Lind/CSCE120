@@ -49,12 +49,6 @@ cmake_ninja_workdir = C$:/Users/tenant/CLionProjects/CSCE120/cmake-build-debug/
 
 build cmake_object_order_depends_target_CSCE120: phony || CMakeFiles/CSCE120.dir
 
-build CMakeFiles/CSCE120.dir/debugging_craps_game/craps.cpp.obj: CXX_COMPILER__CSCE120_unscanned_Debug C$:/Users/tenant/CLionProjects/CSCE120/debugging_craps_game/craps.cpp || cmake_object_order_depends_target_CSCE120
-  DEP_FILE = CMakeFiles\CSCE120.dir\debugging_craps_game\craps.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles\CSCE120.dir
-  OBJECT_FILE_DIR = CMakeFiles\CSCE120.dir\debugging_craps_game
-
 build CMakeFiles/CSCE120.dir/debugging/debugging.cpp.obj: CXX_COMPILER__CSCE120_unscanned_Debug C$:/Users/tenant/CLionProjects/CSCE120/debugging/debugging.cpp || cmake_object_order_depends_target_CSCE120
   DEP_FILE = CMakeFiles\CSCE120.dir\debugging\debugging.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
@@ -75,7 +69,7 @@ build CMakeFiles/CSCE120.dir/debugging/functions.cpp.obj: CXX_COMPILER__CSCE120_
 #############################################
 # Link the executable CSCE120.exe
 
-build CSCE120.exe: CXX_EXECUTABLE_LINKER__CSCE120_Debug CMakeFiles/CSCE120.dir/debugging_craps_game/craps.cpp.obj CMakeFiles/CSCE120.dir/debugging/debugging.cpp.obj CMakeFiles/CSCE120.dir/debugging/functions.cpp.obj
+build CSCE120.exe: CXX_EXECUTABLE_LINKER__CSCE120_Debug CMakeFiles/CSCE120.dir/debugging/debugging.cpp.obj CMakeFiles/CSCE120.dir/debugging/functions.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\CSCE120.dir

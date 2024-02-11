@@ -1,5 +1,8 @@
 #include <stdexcept>
 
+const int INTE_MAX = 2147483647;
+const int INTE_MIN = -2147483648;
+
 int Largest(int a, int b, int c) {
     if (a >= b && a >= c) {
         return a;
@@ -20,6 +23,8 @@ bool SumIsEven(int a, int b) {
 int BoxesNeeded(int apples) {
     if (apples <= 0)
         return 0;
+    if (apples % 20 == 0)
+        return apples / 20;
     return apples / 20 + 1;
 }
 
@@ -46,21 +51,19 @@ int SumBetween(int low, int high) {
     if (low > high) {
         throw std::invalid_argument("low must be less than or equal to high");
     }
-    int value = 0;
-    for (int n = low; n <= high; n++) {
-        if (value > 0 && n > 0 && value > INT_MAX - n) {
-            throw std::overflow_error("Sum exceeds INT_MAX");
-        }
-        if (value < 0 && n < 0 && value < INT_MIN - n) {
-            throw std::overflow_error("Sum exceeds INT_MIN");
-        }
 
-        value += n;
-
+    int sum = 0;
+    for(int i=low; i<=high; i++) {
+        // Check for potential overflow before adding
+        if (i > 0 && sum > INTE_MAX - i) {
+            throw std::overflow_error("Sum exceeds INTE_MAX");
+        }
+        if (i < 0 && sum < INTE_MIN - i) {
+            throw std::overflow_error("Sum exceeds INTE_MIN");
+        }
+        sum += i;
     }
-
-
-    return value;
+    return sum;
 }
 
 int Product(int a, int b) {
@@ -68,17 +71,17 @@ int Product(int a, int b) {
         return 0;
     }
     // check for potential overflow
-    if (a > 0 && b > 0 && a > INT_MAX / b) {
-        throw std::overflow_error("Product exceeds INT_MAX");
+    if (a > 0 && b > 0 && a > INTE_MAX / b) {
+        throw std::overflow_error("Product exceeds INTE_MAX");
     }
-    if (a > 0 && b < 0 && b < INT_MIN / a) {
-        throw std::overflow_error("Product exceeds INT_MIN");
+    if (a > 0 && b < 0 && b < INTE_MIN / a) {
+        throw std::overflow_error("Product exceeds INTE_MIN");
     }
-    if (a < 0 && b > 0 && a < INT_MIN / b) {
-        throw std::overflow_error("Product exceeds INT_MIN");
+    if (a < 0 && b > 0 && a < INTE_MIN / b) {
+        throw std::overflow_error("Product exceeds INTE_MIN");
     }
-    if (a < 0 && b < 0 && a < INT_MAX / b) {
-        throw std::overflow_error("Product exceeds INT_MAX");
+    if (a < 0 && b < 0 && a < INTE_MAX / b) {
+        throw std::overflow_error("Product exceeds INTE_MAX");
     }
     return a * b;
 }
