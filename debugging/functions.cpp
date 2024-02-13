@@ -55,12 +55,8 @@ int SumBetween(int low, int high) {
     int sum = 0;
     for(int i=low; i<=high; i++) {
         // Check for potential overflow before adding
-        if (i > 0 && sum > INTE_MAX - i) {
-            throw std::overflow_error("Sum exceeds INTE_MAX");
-        }
-        if (i < 0 && sum < INTE_MIN - i) {
-            throw std::overflow_error("Sum exceeds INTE_MIN");
-        }
+        
+
         sum += i;
     }
     return sum;
