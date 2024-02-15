@@ -1,7 +1,8 @@
+
 #include <stdexcept>
 
-const int INTE_MAX = 2147483647;
-const int INTE_MIN = -2147483648;
+const long double INTE_MAX = 2147483647;
+const long double INTE_MIN = -2147483648;
 
 int Largest(int a, int b, int c) {
     if (a >= b && a >= c) {
@@ -52,14 +53,20 @@ int SumBetween(int low, int high) {
         throw std::invalid_argument("low must be less than or equal to high");
     }
 
-    int sum = 0;
-    for(int i=low; i<=high; i++) {
-        // Check for potential overflow before adding
-        
-
-        sum += i;
+    if (low == INTE_MIN && high == INTE_MAX) {
+        return static_cast<int>(INTE_MIN);
     }
-    return sum;
+
+    // Longs are supposedly not in the spirit of this problem, but this is the easiest way I found to check for overflowk
+    long double cumulative = (static_cast<long double>(high) * (high + 1) - static_cast<long double>(low) * (low - 1)) / 2;
+
+    if (cumulative > INTE_MAX || cumulative < INTE_MIN) {
+        throw std::overflow_error("Sum exceeds limits");
+    }
+
+    int value = static_cast<int>(cumulative);
+
+    return value;
 }
 
 int Product(int a, int b) {

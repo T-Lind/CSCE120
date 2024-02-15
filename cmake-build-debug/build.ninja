@@ -49,17 +49,11 @@ cmake_ninja_workdir = C$:/Users/tenant/CLionProjects/CSCE120/cmake-build-debug/
 
 build cmake_object_order_depends_target_CSCE120: phony || CMakeFiles/CSCE120.dir
 
-build CMakeFiles/CSCE120.dir/string_lw/main.cpp.obj: CXX_COMPILER__CSCE120_unscanned_Debug C$:/Users/tenant/CLionProjects/CSCE120/string_lw/main.cpp || cmake_object_order_depends_target_CSCE120
-  DEP_FILE = CMakeFiles\CSCE120.dir\string_lw\main.cpp.obj.d
+build CMakeFiles/CSCE120.dir/class_activity_2_15.cpp.obj: CXX_COMPILER__CSCE120_unscanned_Debug C$:/Users/tenant/CLionProjects/CSCE120/class_activity_2_15.cpp || cmake_object_order_depends_target_CSCE120
+  DEP_FILE = CMakeFiles\CSCE120.dir\class_activity_2_15.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\CSCE120.dir
-  OBJECT_FILE_DIR = CMakeFiles\CSCE120.dir\string_lw
-
-build CMakeFiles/CSCE120.dir/string_lw/functions.cpp.obj: CXX_COMPILER__CSCE120_unscanned_Debug C$:/Users/tenant/CLionProjects/CSCE120/string_lw/functions.cpp || cmake_object_order_depends_target_CSCE120
-  DEP_FILE = CMakeFiles\CSCE120.dir\string_lw\functions.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles\CSCE120.dir
-  OBJECT_FILE_DIR = CMakeFiles\CSCE120.dir\string_lw
+  OBJECT_FILE_DIR = CMakeFiles\CSCE120.dir
 
 
 # =============================================================================
@@ -69,7 +63,7 @@ build CMakeFiles/CSCE120.dir/string_lw/functions.cpp.obj: CXX_COMPILER__CSCE120_
 #############################################
 # Link the executable CSCE120.exe
 
-build CSCE120.exe: CXX_EXECUTABLE_LINKER__CSCE120_Debug CMakeFiles/CSCE120.dir/string_lw/main.cpp.obj CMakeFiles/CSCE120.dir/string_lw/functions.cpp.obj
+build CSCE120.exe: CXX_EXECUTABLE_LINKER__CSCE120_Debug CMakeFiles/CSCE120.dir/class_activity_2_15.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\CSCE120.dir
