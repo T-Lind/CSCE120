@@ -3,4 +3,4 @@ project(CSCE120)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(CSCE120 class_activity_2_15.cpp)
+add_executable(CSCE120 exam_1_preparation.cpp)

@@ -1,53 +1,34 @@
 #include <iostream>
-#include <limits>
-#include <cstdlib>
-int count_of_elements(int *A, int length, int a, int b);
+#include <string>
 
-using namespace std;
+int main() {
+    // Initialize a string
+    std::string x = "Hello";
 
-void check_input(int a, int b){
-    if (a >= b)
-    {
-        throw invalid_argument("a must be less than b");
-    }
-    // Otherwise we're good and we don't need to do anything
-}
+    // Accessing characters using at() and []
+    std::cout << "First character using at(): " << x.at(0) << std::endl;
+    std::cout << "First character using []: " << x[0] << std::endl;
 
+    // Append a new string
+    x.append(" World");
+    std::cout << "After append(): " << x << std::endl;
 
+    // Concatenation using the + operator
+    std::string y = " from C++";
+    std::string result = x + y;
+    std::cout << "Concatenation using + operator: " << result << std::endl;
 
-int main () {
-    srand(20);
-    const int SIZE = 1000;
-    int A[SIZE];
-    for (int i = 0; i < SIZE; i++){
-        A[i] = rand() % 100;
-    }
+    // Push back a character
+    result.push_back('!');
+    std::cout << "After push_back(): " << result << std::endl;
 
-    int a;
-    int b;
+    // Insert a new string at a specific location
+    result.insert(6, "Awesome ");
+    std::cout << "After insert(): " << result << std::endl;
 
-    while (true){
-        cout << "Enter a range, a to b: ";
-        cin >> a >> b;
-        try {
-            // make sure input is okay
-            check_input(a, b);
-            break;
-        } catch (const invalid_argument& err) {
-            // Only catch invalid argument for good coding practicies
-            cout << "Invalid input. Try again." << endl;
-        }
-    }
+    // Replace characters at a specific location
+    result.replace(7, 3, "Incredible");
+    std::cout << "After replace(): " << result << std::endl;
 
-    cout << "Number of elements between " << a << " and " << b << " is : " << count_of_elements(A, SIZE, a, b) << endl;
-}
-
-
-int count_of_elements(int *A, int length, int a, int b){
-    int count = 0;
-    for (int i = 0; i < length; i++){
-        if ((A[i] >= a) && (A[i] <= b) )
-            count++;
-    }
-    return count;
+    return 0;
 }
