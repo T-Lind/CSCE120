@@ -1,8 +1,7 @@
 #include <iostream>
 #include <string>
-#include <vector>
-
-void changeX(int *x){
+#include <stdexcept>
+void changeX(int *x) {
     *x -= 1670;
 }
 
@@ -25,15 +24,22 @@ int main() {
 
     cout << testString << endl;
 
-    vector<double> myVec = {1.0, 2.0, 3.0, 4.0, 5.0};
 
-    for (double i : myVec) {
-        cout << i << " ";
-    }
-
-    int* xPtr = &x;
+    int *xPtr = &x;
     changeX(xPtr);
     cout << *xPtr << endl;
+
+    // error exceptions
+
+    try {
+        throw 3;
+    }
+//    catch (exception &exception) {
+//        cout << "excp " << exception.what() << endl;
+//    }
+    catch(...) {
+        cout << "unknown" << endl;
+    }
 
     return 0;
 }
