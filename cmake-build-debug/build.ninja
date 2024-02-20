@@ -49,8 +49,8 @@ cmake_ninja_workdir = C$:/Users/tenant/CLionProjects/CSCE120/cmake-build-debug/
 
 build cmake_object_order_depends_target_CSCE120: phony || CMakeFiles/CSCE120.dir
 
-build CMakeFiles/CSCE120.dir/exam_1_preparation.cpp.obj: CXX_COMPILER__CSCE120_unscanned_Debug C$:/Users/tenant/CLionProjects/CSCE120/exam_1_preparation.cpp || cmake_object_order_depends_target_CSCE120
-  DEP_FILE = CMakeFiles\CSCE120.dir\exam_1_preparation.cpp.obj.d
+build CMakeFiles/CSCE120.dir/program_generation.cpp.obj: CXX_COMPILER__CSCE120_unscanned_Debug C$:/Users/tenant/CLionProjects/CSCE120/program_generation.cpp || cmake_object_order_depends_target_CSCE120
+  DEP_FILE = CMakeFiles\CSCE120.dir\program_generation.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\CSCE120.dir
   OBJECT_FILE_DIR = CMakeFiles\CSCE120.dir
@@ -63,7 +63,7 @@ build CMakeFiles/CSCE120.dir/exam_1_preparation.cpp.obj: CXX_COMPILER__CSCE120_u
 #############################################
 # Link the executable CSCE120.exe
 
-build CSCE120.exe: CXX_EXECUTABLE_LINKER__CSCE120_Debug CMakeFiles/CSCE120.dir/exam_1_preparation.cpp.obj
+build CSCE120.exe: CXX_EXECUTABLE_LINKER__CSCE120_Debug CMakeFiles/CSCE120.dir/program_generation.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\CSCE120.dir
