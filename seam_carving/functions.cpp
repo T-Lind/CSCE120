@@ -102,17 +102,146 @@ unsigned int energy(Pixel image[][3], unsigned int x, unsigned int y, unsigned i
     }
     else {
         // solve for edge/corner cases using a wrap around method
-        unsigned int rX = image[(x + 1) % width][y].r - image[(x - 1 + width) % width][y].r;
-        unsigned int gX = image[(x + 1) % width][y].g - image[(x - 1 + width) % width][y].g;
-        unsigned int bX = image[(x + 1) % width][y].b - image[(x - 1 + width) % width][y].b;
-        unsigned int deltaX = rX * rX + gX * gX + bX * bX;
+        // case 1: top left corner
+        if (x == 0 && y == 0) {
+            // use the top right and bottom left corners for x and y wrap around
+            unsigned int rX = image[x + 1][y].r - image[width - 1][y].r;
+            unsigned int gX = image[x + 1][y].g - image[width - 1][y].g;
+            unsigned int bX = image[x + 1][y].b - image[width - 1][y].b;
 
-        unsigned int rY = image[x][(y + 1) % height].r - image[x][(y - 1 + height) % height].r;
-        unsigned int gY = image[x][(y + 1) % height].g - image[x][(y - 1 + height) % height].g;
-        unsigned int bY = image[x][(y + 1) % height].b - image[x][(y - 1 + height) % height].b;
-        unsigned int deltaY = rY * rY + gY * gY + bY * bY;
+            unsigned int deltaX = rX * rX + gX * gX + bX * bX;
 
-        return deltaX + deltaY;
+            unsigned int rY = image[x][y + 1].r - image[x][height - 1].r;
+            unsigned int gY = image[x][y + 1].g - image[x][height - 1].g;
+            unsigned int bY = image[x][y + 1].b - image[x][height - 1].b;
+
+            unsigned int deltaY = rY * rY + gY * gY + bY * bY;
+
+            return deltaX + deltaY;
+        }
+        // case 2: top right corner
+        if (x == width - 1 && y == 0) {
+            // use the top left and bottom right corners for x and y wrap around
+            unsigned int rX = image[0][y].r - image[x - 1][y].r;
+            unsigned int gX = image[0][y].g - image[x - 1][y].g;
+            unsigned int bX = image[0][y].b - image[x - 1][y].b;
+
+            unsigned int deltaX = rX * rX + gX * gX + bX * bX;
+
+            unsigned int rY = image[x][y + 1].r - image[x][height - 1].r;
+            unsigned int gY = image[x][y + 1].g - image[x][height - 1].g;
+            unsigned int bY = image[x][y + 1].b - image[x][height - 1].b;
+
+            unsigned int deltaY = rY * rY + gY * gY + bY * bY;
+
+            return deltaX + deltaY;
+        }
+        // case 3: bottom left corner
+        if (x == 0 && y == height - 1) {
+            // use the top left and bottom right corners for x and y wrap around
+            unsigned int rX = image[x + 1][y].r - image[width - 1][y].r;
+            unsigned int gX = image[x + 1][y].g - image[width - 1][y].g;
+            unsigned int bX = image[x + 1][y].b - image[width - 1][y].b;
+
+            unsigned int deltaX = rX * rX + gX * gX + bX * bX;
+
+            unsigned int rY = image[x][0].r - image[x][y - 1].r;
+            unsigned int gY = image[x][0].g - image[x][y - 1].g;
+            unsigned int bY = image[x][0].b - image[x][y - 1].b;
+
+            unsigned int deltaY = rY * rY + gY * gY + bY * bY;
+
+            return deltaX + deltaY;
+        }
+        // case 4: bottom right corner
+        if (x == width - 1 && y == height - 1) {
+            // use the bottom left and top right corners for x and y wrap around
+            unsigned int rX = image[0][y].r - image[x - 1][y].r;
+            unsigned int gX = image[0][y].g - image[x - 1][y].g;
+            unsigned int bX = image[0][y].b - image[x - 1][y].b;
+
+            unsigned int deltaX = rX * rX + gX * gX + bX * bX;
+
+            unsigned int rY = image[x][0].r - image[x][y - 1].r;
+            unsigned int gY = image[x][0].g - image[x][y - 1].g;
+            unsigned int bY = image[x][0].b - image[x][y - 1].b;
+
+            unsigned int deltaY = rY * rY + gY * gY + bY * bY;
+
+            return deltaX + deltaY;
+        }
+        // case 5: top edge
+        if (y == 0) {
+            // use the top left and top right corners for x and y wrap around
+            unsigned int rX = image[x + 1][y].r - image[x - 1][y].r;
+            unsigned int gX = image[x + 1][y].g - image[x - 1][y].g;
+            unsigned int bX = image[x + 1][y].b - image[x - 1][y].b;
+
+            unsigned int deltaX = rX * rX + gX * gX + bX * bX;
+
+            unsigned int rY = image[x][y + 1].r - image[x][height - 1].r;
+            unsigned int gY = image[x][y + 1].g - image[x][height - 1].g;
+            unsigned int bY = image[x][y + 1].b - image[x][height - 1].b;
+
+            unsigned int deltaY = rY * rY + gY * gY + bY * bY;
+
+            return deltaX + deltaY;
+        }
+        // case 6: bottom edge
+        if (y == height - 1) {
+            // use the bottom left and bottom right corners for x and y wrap around
+            unsigned int rX = image[x + 1][y].r - image[x - 1][y].r;
+            unsigned int gX = image[x + 1][y].g - image[x - 1][y].g;
+            unsigned int bX = image[x + 1][y].b - image[x - 1][y].b;
+
+            unsigned int deltaX = rX * rX + gX * gX + bX * bX;
+
+            unsigned int rY = image[x][0].r - image[x][y - 1].r;
+            unsigned int gY = image[x][0].g - image[x][y - 1].g;
+            unsigned int bY = image[x][0].b - image[x][y - 1].b;
+
+            unsigned int deltaY = rY * rY + gY * gY + bY * bY;
+
+            return deltaX + deltaY;
+        }
+        // case 7: left edge
+        if (x == 0) {
+            // use the top left and bottom left corners for x and y wrap around
+            unsigned int rX = image[x + 1][y].r - image[width - 1][y].r;
+            unsigned int gX = image[x + 1][y].g - image[width - 1][y].g;
+            unsigned int bX = image[x + 1][y].b - image[width - 1][y].b;
+
+            unsigned int deltaX = rX * rX + gX * gX + bX * bX;
+
+            unsigned int rY = image[x][y + 1].r - image[x][y - 1].r;
+            unsigned int gY = image[x][y + 1].g - image[x][y - 1].g;
+            unsigned int bY = image[x][y + 1].b - image[x][y - 1].b;
+
+            unsigned int deltaY = rY * rY + gY * gY + bY * bY;
+
+            return deltaX + deltaY;
+        }
+        // case 8: right edge
+        if (x == width - 1) {
+            // use the top right and bottom right corners for x and y wrap around
+            unsigned int rX = image[0][y].r - image[x - 1][y].r;
+            unsigned int gX = image[0][y].g - image[x - 1][y].g;
+            unsigned int bX = image[0][y].b - image[x - 1][y].b;
+
+            unsigned int deltaX = rX * rX + gX * gX + bX * bX;
+
+            unsigned int rY = image[x][y + 1].r - image[x][y - 1].r;
+            unsigned int gY = image[x][y + 1].g - image[x][y - 1].g;
+            unsigned int bY = image[x][y + 1].b - image[x][y - 1].b;
+
+            unsigned int deltaY = rY * rY + gY * gY + bY * bY;
+
+            return deltaX + deltaY;
+        }
+        else {
+            return 0;
+        }
+
     }
 }
 
