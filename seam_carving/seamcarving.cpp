@@ -44,12 +44,12 @@ int main() {
     //   targetWidth or targetHeight
 
     if (targetWidth <= 0 || targetWidth > width) {
-        cout << "Invalid target width!!!" << endl;
+        cout << "Invalid target dimensions" << endl;
         return 1;
     }
 
     if (targetHeight <= 0 || targetHeight > height) {
-        cout << "Invalid target height!!!" << endl;
+        cout << "Invalid target dimensions" << endl;
         return 1;
     }
     cout << "Start carving..." << endl;
@@ -82,18 +82,8 @@ int main() {
         cout << "Exception thrown: " << ex.what() << endl;
         return 1; // exit with an error
     }
+    cout << "Image output" << endl;
 
-    cout << "Image\n"
-            "        // attempt to output image\n"
-            "        stringstream ss;\n"
-            "        ss << \"carved\" << width << \"X\" << height << \".ppm\";\n"
-            "        outputImage(ss.str().c_str(), image, width, height);\n"
-            "    } catch (std::exception &ex) {\n"
-            "        cout << \"Exception thrown: \" << ex.what() << endl;\n"
-            "        return 1; // exit with an error\n"
-            "    }\n"
-            "\n"
-            "    cout << \"Image output" << endl;
 
     return 0; // exit without errors
 }
