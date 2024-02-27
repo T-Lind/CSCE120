@@ -41,43 +41,37 @@ include CMakeFiles/rules.ninja
 
 cmake_ninja_workdir = C$:/Users/tenant/CLionProjects/CSCE120/cmake-build-debug/
 # =============================================================================
-# Object build statements for EXECUTABLE target CSCE120
+# Object build statements for EXECUTABLE target test_nth_root.cpp
 
 
 #############################################
-# Order-only phony target for CSCE120
+# Order-only phony target for test_nth_root.cpp
 
-build cmake_object_order_depends_target_CSCE120: phony || CMakeFiles/CSCE120.dir
+build cmake_object_order_depends_target_test_nth_root.cpp: phony || CMakeFiles/test_nth_root.cpp.dir
 
-build CMakeFiles/CSCE120.dir/seam_carving/seamcarving.cpp.obj: CXX_COMPILER__CSCE120_unscanned_Debug C$:/Users/tenant/CLionProjects/CSCE120/seam_carving/seamcarving.cpp || cmake_object_order_depends_target_CSCE120
-  DEP_FILE = CMakeFiles\CSCE120.dir\seam_carving\seamcarving.cpp.obj.d
+build CMakeFiles/test_nth_root.cpp.dir/nth_root.cpp.obj: CXX_COMPILER__test_nth_root.2ecpp_unscanned_Debug C$:/Users/tenant/CLionProjects/CSCE120/nth_root.cpp || cmake_object_order_depends_target_test_nth_root.cpp
+  DEP_FILE = CMakeFiles\test_nth_root.cpp.dir\nth_root.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles\CSCE120.dir
-  OBJECT_FILE_DIR = CMakeFiles\CSCE120.dir\seam_carving
-
-build CMakeFiles/CSCE120.dir/seam_carving/functions.cpp.obj: CXX_COMPILER__CSCE120_unscanned_Debug C$:/Users/tenant/CLionProjects/CSCE120/seam_carving/functions.cpp || cmake_object_order_depends_target_CSCE120
-  DEP_FILE = CMakeFiles\CSCE120.dir\seam_carving\functions.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles\CSCE120.dir
-  OBJECT_FILE_DIR = CMakeFiles\CSCE120.dir\seam_carving
+  OBJECT_DIR = CMakeFiles\test_nth_root.cpp.dir
+  OBJECT_FILE_DIR = CMakeFiles\test_nth_root.cpp.dir
 
 
 # =============================================================================
-# Link build statements for EXECUTABLE target CSCE120
+# Link build statements for EXECUTABLE target test_nth_root.cpp
 
 
 #############################################
-# Link the executable CSCE120.exe
+# Link the executable test_nth_root.cpp.exe
 
-build CSCE120.exe: CXX_EXECUTABLE_LINKER__CSCE120_Debug CMakeFiles/CSCE120.dir/seam_carving/seamcarving.cpp.obj CMakeFiles/CSCE120.dir/seam_carving/functions.cpp.obj
+build test_nth_root.cpp.exe: CXX_EXECUTABLE_LINKER__test_nth_root.2ecpp_Debug CMakeFiles/test_nth_root.cpp.dir/nth_root.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
-  OBJECT_DIR = CMakeFiles\CSCE120.dir
+  OBJECT_DIR = CMakeFiles\test_nth_root.cpp.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
-  TARGET_FILE = CSCE120.exe
-  TARGET_IMPLIB = libCSCE120.dll.a
-  TARGET_PDB = CSCE120.exe.dbg
+  TARGET_FILE = test_nth_root.cpp.exe
+  TARGET_IMPLIB = libtest_nth_root.cpp.dll.a
+  TARGET_PDB = test_nth_root.cpp.exe.dbg
 
 
 #############################################
@@ -105,7 +99,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # =============================================================================
 # Target aliases.
 
-build CSCE120: phony CSCE120.exe
+build test_nth_root.cpp: phony test_nth_root.cpp.exe
 
 # =============================================================================
 # Folder targets.
@@ -115,7 +109,7 @@ build CSCE120: phony CSCE120.exe
 #############################################
 # Folder: C:/Users/tenant/CLionProjects/CSCE120/cmake-build-debug
 
-build all: phony CSCE120.exe
+build all: phony test_nth_root.cpp.exe
 
 # =============================================================================
 # Built-in targets

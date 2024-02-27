@@ -112,7 +112,7 @@ unsigned int energy(Pixel image[][3], unsigned int x, unsigned int y, unsigned i
         unsigned int bY = image[x][(y + 1) % height].b - image[x][(y - 1 + height) % height].b;
         unsigned int deltaY = rY * rY + gY * gY + bY * bY;
 
-        return deltaX + deltaY;d
+        return deltaX + deltaY;
     }
 }
 
