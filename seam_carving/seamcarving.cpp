@@ -54,24 +54,21 @@ int main() {
     }
     cout << "Start carving..." << endl;
 
-    // TODO: uncomment functions in the following while loop
-    //       as you implement (part 2)
-
-    // while ((width - targetWidth > 0) || (height - targetHeight > 0)) {
-    //   // find and remove a vertical seam
-    //   if (width - targetWidth > 0) {
-    //     unsigned int verticalSeam[MAX_HEIGHT];
-    //     //findMinVerticalSeam(image, width, height, verticalSeam); // uncomment when ready to use (part2)
-    //     //removeVerticalSeam(image, width, height, verticalSeam); // uncomment when ready to use (part 2)
-    //   }
-    //   // this is for the extra credit
-    //   // find and remove a horizontal seam
-    //   if (height - targetHeight > 0) {
-    //     unsigned int horizontalSeam[MAX_WIDTH];
-    //     //findMinHorizontalSeam(image, width, height, horizontalSeam); // uncomment when ready to use (part 2 extra credit)
-    //     //removeHorizontalSeam(image, width, height, horizontalSeam); // uncomment when ready to use (part 2 extra credit)
-    //   }
-    // }
+     while ((width - targetWidth > 0) || (height - targetHeight > 0)) {
+       // find and remove a vertical seam
+       if (width - targetWidth > 0) {
+         unsigned int verticalSeam[MAX_HEIGHT];
+         findMinVerticalSeam(image, width, height, verticalSeam); // uncomment when ready to use (part2)
+         removeVerticalSeam(image, width, height, verticalSeam); // uncomment when ready to use (part 2)
+       }
+       // this is for the extra credit
+       // find and remove a horizontal seam
+       if (height - targetHeight > 0) {
+         unsigned int horizontalSeam[MAX_WIDTH];
+         findMinHorizontalSeam(image, width, height, horizontalSeam); // uncomment when ready to use (part 2 extra credit)
+         removeHorizontalSeam(image, width, height, horizontalSeam); // uncomment when ready to use (part 2 extra credit)
+       }
+     }
 
     try {
         // attempt to output image
