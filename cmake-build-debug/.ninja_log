@@ -1,5 +1,5 @@
 # ninja log v5
-1	536	7307643548026883	build.ninja	99e288cfc5f75395
+1	536	7315275516596845	build.ninja	99e288cfc5f75395
 415	504	7306839195300134	CSCE120.exe	39d484a37a35eac0
 3	543	7285012242674663	CMakeFiles/CSCE120.dir/ArraySum.cpp.obj	3c7aa76b959b86be
 0	564	7286869301857642	CMakeFiles/CSCE120.dir/c_string/main.cpp.obj	af20c522ab0bdf9e
@@ -14,5 +14,9 @@
 4	537	7295552979855311	CMakeFiles/CSCE120.dir/string_lw/functions.cpp.obj	f82c219b83fc294a
 3	343	7300872039689718	CMakeFiles/CSCE120.dir/exam_1_preparation.cpp.obj	31b1cce3f27228d
 0	610	7301443559422797	CMakeFiles/CSCE120.dir/program_generation.cpp.obj	c1f82a0d69a7503
-2	414	7306839194423841	CMakeFiles/CSCE120.dir/seam_carving/functions.cpp.obj	d34a118b400d04d0
-3	457	7306829437898806	CMakeFiles/CSCE120.dir/seam_carving/seamcarving.cpp.obj	29a5f2c4e09d04f5
+1	879	7315275342196014	CMakeFiles/CSCE120.dir/seam_carving/functions.cpp.obj	d34a118b400d04d0
+6	874	7315275342013797	CMakeFiles/CSCE120.dir/seam_carving/seamcarving.cpp.obj	29a5f2c4e09d04f5
+14	877	7315275341995072	CMakeFiles/CSCE120.dir/StringCopy.cpp.obj	e4db3a44b0614373
+3	99	7315275573582548	CSCE120.exe	8d5bcf9d00b04051
+3	717	7315277027554822	CMakeFiles/CSCE120.dir/StringCopy.cpp.obj	e4db3a44b0614373
+718	847	7315277028800354	CSCE120.exe	8d5bcf9d00b04051
