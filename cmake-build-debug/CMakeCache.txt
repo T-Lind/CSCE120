@@ -251,6 +251,12 @@ CSCE120_IS_TOP_LEVEL:STATIC=ON
 //Value Computed by CMake
 CSCE120_SOURCE_DIR:STATIC=C:/Users/tenant/CLionProjects/CSCE120
 
+//The directory containing a CMake configuration file for SFML.
+SFML_DIR:PATH=C:/Users/tenant/Downloads/SFML-2.6.1-windows-vc17-64-bit/SFML-2.6.1/lib/cmake/SFML
+
+//Path to a file.
+SFML_DOC_DIR:PATH=SFML_DOC_DIR-NOTFOUND
+
 
 ########################
 # INTERNAL cache entries
