@@ -19,28 +19,80 @@ using std::cout, std::endl, std::ifstream, std::string;
  */
 char** loadLevel(const string& fileName, int& maxRow, int& maxCol, Player& player) {
     ifstream file(fileName);
-    if (!file) {
+    if (!file.is_open()) {
         cout << "Failed to open file: " << fileName << endl;
         return nullptr;
     }
 
-    file >> maxRow >> maxCol;
-    char** map = createMap(maxRow, maxCol);
+    // Check if the file is empty
+    if (file.peek() == EOF) {
+        cout << "File is empty: " << fileName << endl;
+        return nullptr;
+    }
 
+    file >> maxRow >> maxCol;
+    if (maxRow <= 0 || maxCol <= 0 || static_cast<long long>(maxRow) * maxCol > 2147483647) {
+        cout << "Invalid map dimensions: " << maxRow << "x" << maxCol << endl;
+        return nullptr;
+    }
+
+    file >> player.row >> player.col;
+    if (player.row < 0 || player.row >= maxRow || player.col < 0 || player.col >= maxCol) {
+        cout << "Invalid player starting location: " << player.row << "," << player.col << endl;
+        return nullptr;
+    }
+
+    char** map = createMap(maxRow, maxCol);
+    if (map == nullptr) {
+        cout << "Failed to create map" << endl;
+        return nullptr;
+    }
+
+    int tileCount = 0;
     for(int i = 0; i < maxRow; i++) {
         for(int j = 0; j < maxCol; j++) {
-            file >> map[i][j];
-            if(map[i][j] == TILE_PLAYER) {
+            char tile;
+            do {
+                file >> tile;
+            } while (std::isspace(tile)); // Skip over any whitespace characters
+
+            if (file.fail()) {
+                cout << "Failed to read cell at " << i << "," << j << endl;
+                deleteMap(map, maxRow);
+                return nullptr;
+            }
+
+            map[i][j] = tile;
+            tileCount++;
+
+            if(tile == TILE_PLAYER) {
                 player.row = i;
                 player.col = j;
             }
         }
     }
 
+    if (tileCount != maxRow * maxCol) {
+        cout << "Invalid number of tiles: " << tileCount << " (expected " << maxRow * maxCol << ")" << endl;
+        deleteMap(map, maxRow);
+        return nullptr;
+    }
+
+    if (map[player.row][player.col] != TILE_OPEN) {
+        cout << "Player's starting location is not an open spot: " << player.row << "," << player.col << endl;
+        deleteMap(map, maxRow);
+        return nullptr;
+    }
+
+    if (file.bad()) {
+        cout << "Error while reading file" << endl;
+        deleteMap(map, maxRow);
+        return nullptr;
+    }
+
     file.close();
     return map;
 }
-
 /**
  * TODO: Student implement this function
  * Translate the character direction input by the user into row or column change.
@@ -131,10 +183,18 @@ char** resizeMap(char** map, int& maxRow, int& maxCol) {
     // Copy the old map into the new map
     for(int i = 0; i < maxRow; i++) {
         for(int j = 0; j < maxCol; j++) {
-            newMap[i][j] = map[i][j]; // Copy to the same position
-            newMap[i + maxRow][j] = map[i][j]; // Copy below
-            newMap[i][j + maxCol] = map[i][j]; // Copy to the right
-            newMap[i + maxRow][j + maxCol] = map[i][j]; // Copy diagonal down
+            char tile = map[i][j];
+            newMap[i][j] = tile; // Copy to the same position
+            newMap[i + maxRow][j] = tile; // Copy below
+            newMap[i][j + maxCol] = tile; // Copy to the right
+            newMap[i + maxRow][j + maxCol] = tile; // Copy diagonal down
+
+            // If the tile is the player, replace it with TILE_OPEN in the new positions
+            if (tile == TILE_PLAYER) {
+                newMap[i + maxRow][j] = TILE_OPEN;
+                newMap[i][j + maxCol] = TILE_OPEN;
+                newMap[i + maxRow][j + maxCol] = TILE_OPEN;
+            }
         }
     }
 
@@ -147,7 +207,6 @@ char** resizeMap(char** map, int& maxRow, int& maxCol) {
 
     return newMap;
 }
-
 /**
  * TODO: Student implement this function
  * Checks if the player can move in the specified direction and performs the move if so.
@@ -166,56 +225,46 @@ char** resizeMap(char** map, int& maxRow, int& maxCol) {
  * @update map contents, player
  */
 int doPlayerMove(char** map, int maxRow, int maxCol, Player& player, int nextRow, int nextCol) {
-    // Check if the next position is out of bounds
-    if(nextRow < 0 || nextRow >= maxRow || nextCol < 0 || nextCol >= maxCol) {
+    // Check if the move is within bounds
+    if (nextRow < 0 || nextRow >= maxRow || nextCol < 0 || nextCol >= maxCol) {
         return STATUS_STAY;
     }
 
-    // Check the tile at the next position
-    char tile = map[nextRow][nextCol];
-    switch(tile) {
-        case TILE_OPEN:
-            // Move the player to the next position
-            map[player.row][player.col] = TILE_OPEN;
-            map[nextRow][nextCol] = TILE_PLAYER;
-            player.row = nextRow;
-            player.col = nextCol;
-            return STATUS_MOVE;
+    char nextTile = map[nextRow][nextCol];
 
-        case TILE_TREASURE:
-            // Move the player to the next position and increment the treasure count
-            map[player.row][player.col] = TILE_OPEN;
-            map[nextRow][nextCol] = TILE_PLAYER;
-            player.row = nextRow;
-            player.col = nextCol;
-            player.treasure++;
-            return STATUS_TREASURE;
-
-        case TILE_EXIT:
-            // Check if the player has at least one treasure
-            if(player.treasure > 0) {
-                // Move the player to the next position and decrement the treasure count
-                map[player.row][player.col] = TILE_OPEN;
-                map[nextRow][nextCol] = TILE_PLAYER;
-                player.row = nextRow;
-                player.col = nextCol;
-                player.treasure--;
-                return STATUS_LEAVE;
-            } else {
-                return STATUS_STAY;
-            }
-
-        case TILE_PILLAR:
-        case TILE_MONSTER:
-            // The player cannot move onto a pillar or monster
-            return STATUS_STAY;
-
-        default:
-            // Do nothing if the tile is not recognized
-            return STATUS_STAY;
+    // Check if the move is onto a pillar or a monster
+    if (nextTile == TILE_PILLAR || nextTile == TILE_MONSTER) {
+        return STATUS_STAY;
     }
-}
 
+    // Check if the move is onto a door
+    if (nextTile == TILE_DOOR) {
+        return STATUS_LEAVE;
+    }
+
+    // Check if the move is onto an exit
+    if (nextTile == TILE_EXIT) {
+        if (player.treasure > 0) {
+            return STATUS_ESCAPE;
+        } else {
+            return STATUS_STAY;
+        }
+    }
+
+    // Check if the move is onto a treasure
+    if (nextTile == TILE_TREASURE) {
+        player.treasure++;
+        map[nextRow][nextCol] = TILE_OPEN;
+    }
+
+    // Update the player's position
+    map[player.row][player.col] = TILE_OPEN;
+    player.row = nextRow;
+    player.col = nextCol;
+    map[player.row][player.col] = TILE_PLAYER;
+
+    return STATUS_MOVE;
+}
 /**
  * TODO: Student implement this function
  * Update monster locations:
