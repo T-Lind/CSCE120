@@ -49,7 +49,43 @@ void runTests() {
             }
         }
     }
-    cout << "Tests passed!" << endl;
+
+
+    // Ensure populateXYGrid works
+
+    vector<vector<double>> expectedXY = {{-1.0, -1.0},
+                                         {-1.0, 0.0},
+                                         {-1.0, 1.0},
+                                         {0.0, -1.0},
+                                         {0.0, 0.0},
+                                         {0.0, 1.0},
+                                         {1.0, -1.0},
+                                         {1.0, 0.0},
+                                         {1.0, 1.0}};
+
+    for (int i = 0; i < xygrid.size(); i++) {
+        for (int j = 0; j < 2; j++) {
+            if (abs(xygrid[i][j] - expectedXY[i][j]) > 0.001) {
+                cout << "Test failed: xygrid[" << i << "][" << j << "] was " << xygrid[i][j] << " but expected " << expectedXY[i][j] << endl;
+                return;
+            }
+        }
+
+    }
+
+    // ensure makeRotationMatrixForA works
+    vector<vector<double>> expectedA = {{0.707107, -0.707107},
+                                        {0.707107, 0.707107}};
+    for (int i = 0; i < 2; i++) {
+        for (int j = 0; j < 2; j++) {
+            if (abs(a[i][j] - expectedA[i][j]) > 0.001) {
+                cout << "Test failed: a[" << i << "][" << j << "] was " << a[i][j] << " but expected " << expectedA[i][j] << endl;
+                return;
+            }
+        }
+    }
+
+    cout << "All tests passed!" << endl;
 }
 
 
