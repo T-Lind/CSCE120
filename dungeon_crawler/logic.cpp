@@ -175,6 +175,11 @@ void deleteMap(char**& map, int& maxRow) {
  * @update maxRow, maxCol
  */
 char** resizeMap(char** map, int& maxRow, int& maxCol) {
+    // Check if the map is null or one of the dimensions is invalid
+    if (map == nullptr || maxRow <= 0 || maxCol <= 0) {
+        return nullptr;
+    }
+
     // Create a new map with double the size
     int newMaxRow = maxRow * 2;
     int newMaxCol = maxCol * 2;
@@ -185,16 +190,9 @@ char** resizeMap(char** map, int& maxRow, int& maxCol) {
         for(int j = 0; j < maxCol; j++) {
             char tile = map[i][j];
             newMap[i][j] = tile; // Copy to the same position
-            newMap[i + maxRow][j] = tile; // Copy below
-            newMap[i][j + maxCol] = tile; // Copy to the right
-            newMap[i + maxRow][j + maxCol] = tile; // Copy diagonal down
-
-            // If the tile is the player, replace it with TILE_OPEN in the new positions
-            if (tile == TILE_PLAYER) {
-                newMap[i + maxRow][j] = TILE_OPEN;
-                newMap[i][j + maxCol] = TILE_OPEN;
-                newMap[i + maxRow][j + maxCol] = TILE_OPEN;
-            }
+            newMap[i + maxRow][j] = (tile == TILE_PLAYER) ? TILE_OPEN : tile; // Copy below
+            newMap[i][j + maxCol] = (tile == TILE_PLAYER) ? TILE_OPEN : tile; // Copy to the right
+            newMap[i + maxRow][j + maxCol] = (tile == TILE_PLAYER) ? TILE_OPEN : tile; // Copy diagonal down
         }
     }
 
@@ -225,44 +223,66 @@ char** resizeMap(char** map, int& maxRow, int& maxCol) {
  * @update map contents, player
  */
 int doPlayerMove(char** map, int maxRow, int maxCol, Player& player, int nextRow, int nextCol) {
-    // Check if the move is within bounds
-    if (nextRow < 0 || nextRow >= maxRow || nextCol < 0 || nextCol >= maxCol) {
+    // Save the current position
+    int oldRow = player.row;
+    int oldCol = player.col;
+
+    // Check if the next position is out of bounds or on an impassable tile
+    if (nextRow < 0 || nextRow >= maxRow || nextCol < 0 || nextCol >= maxCol ||
+        map[nextRow][nextCol] == TILE_PILLAR || map[nextRow][nextCol] == TILE_MONSTER) {
+        nextRow = player.row;
+        nextCol = player.col;
         return STATUS_STAY;
     }
 
-    char nextTile = map[nextRow][nextCol];
-
-    // Check if the move is onto a pillar or a monster
-    if (nextTile == TILE_PILLAR || nextTile == TILE_MONSTER) {
-        return STATUS_STAY;
+    // Check if the next position is on a treasure tile
+    if (map[nextRow][nextCol] == TILE_TREASURE) {
+        player.treasure++;
+        player.row = nextRow;
+        player.col = nextCol;
+        map[player.row][player.col] = TILE_PLAYER;
+        map[oldRow][oldCol] = TILE_OPEN;
+        return STATUS_TREASURE;
     }
 
-    // Check if the move is onto a door
-    if (nextTile == TILE_DOOR) {
+    // Check if the next position is on an amulet tile
+    if (map[nextRow][nextCol] == TILE_AMULET) {
+        player.row = nextRow;
+        player.col = nextCol;
+        map[player.row][player.col] = TILE_PLAYER;
+        map[oldRow][oldCol] = TILE_OPEN;
+        return STATUS_AMULET;
+    }
+
+    // Check if the next position is on a door to the next level
+    if (map[nextRow][nextCol] == TILE_DOOR) {
+        player.row = nextRow;
+        player.col = nextCol;
+        map[player.row][player.col] = TILE_PLAYER;
+        map[oldRow][oldCol] = TILE_OPEN;
         return STATUS_LEAVE;
     }
 
-    // Check if the move is onto an exit
-    if (nextTile == TILE_EXIT) {
+    // Check if the next position is on an exit to the whole dungeon
+    if (map[nextRow][nextCol] == TILE_EXIT) {
         if (player.treasure > 0) {
+            player.row = nextRow;
+            player.col = nextCol;
+            map[player.row][player.col] = TILE_PLAYER;
+            map[oldRow][oldCol] = TILE_OPEN;
             return STATUS_ESCAPE;
         } else {
+            nextRow = player.row;
+            nextCol = player.col;
             return STATUS_STAY;
         }
     }
 
-    // Check if the move is onto a treasure
-    if (nextTile == TILE_TREASURE) {
-        player.treasure++;
-        map[nextRow][nextCol] = TILE_OPEN;
-    }
-
-    // Update the player's position
-    map[player.row][player.col] = TILE_OPEN;
+    // If none of the above conditions are met, the player simply moves
     player.row = nextRow;
     player.col = nextCol;
     map[player.row][player.col] = TILE_PLAYER;
-
+    map[oldRow][oldCol] = TILE_OPEN;
     return STATUS_MOVE;
 }
 /**
@@ -304,6 +324,10 @@ bool doMonsterAttack(char** map, int maxRow, int maxCol, const Player& player) {
                     // Move the monster towards the player
                     map[checkRow][checkCol] = TILE_OPEN;
                     map[checkRow - dx][checkCol - dy] = TILE_MONSTER;
+                    // Check if the monster has moved onto the player's tile
+                    if (checkRow - dx == player.row && checkCol - dy == player.col) {
+                        return true;
+                    }
                     break;
 
                 case TILE_PILLAR:
@@ -311,10 +335,6 @@ bool doMonsterAttack(char** map, int maxRow, int maxCol, const Player& player) {
                     // Stop checking in this direction if we hit an obstacle
                     i = maxRow;
                     break;
-
-                case TILE_PLAYER:
-                    // A monster has moved onto the player's tile
-                    return true;
 
                 default:
                     // Continue checking in this direction
