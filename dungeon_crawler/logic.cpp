@@ -65,9 +65,8 @@ char** loadLevel(const string& fileName, int& maxRow, int& maxCol, Player& playe
             map[i][j] = tile;
             tileCount++;
 
-            if(tile == TILE_PLAYER) {
-                player.row = i;
-                player.col = j;
+            if(i == player.row && j == player.col) {
+                map[i][j] = TILE_PLAYER;
             }
         }
     }
@@ -154,14 +153,18 @@ char** createMap(int maxRow, int maxCol) {
  * @update map, maxRow
  */
 void deleteMap(char**& map, int& maxRow) {
-    // Check if the map is null or maxRow is invalid
-    if (map == nullptr || maxRow <= 0) {
+    // Check if the map is null
+    if (map == nullptr) {
+        maxRow = 0;
         return;
     }
 
     // Deallocate each row
     for(int i = 0; i < maxRow; i++) {
-        delete[] map[i];
+        if (map[i] != nullptr) {
+            delete[] map[i];
+            map[i] = nullptr;
+        }
     }
 
     // Deallocate the array of pointers
