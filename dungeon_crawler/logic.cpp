@@ -154,14 +154,23 @@ char** createMap(int maxRow, int maxCol) {
  * @update map, maxRow
  */
 void deleteMap(char**& map, int& maxRow) {
+    // Check if the map is null or maxRow is invalid
+    if (map == nullptr || maxRow <= 0) {
+        return;
+    }
+
+    // Deallocate each row
     for(int i = 0; i < maxRow; i++) {
         delete[] map[i];
     }
+
+    // Deallocate the array of pointers
     delete[] map;
+
+    // Update map and maxRow
     map = nullptr;
     maxRow = 0;
 }
-
 /**
  * TODO: Student implement this function
  * Resize the 2D map by doubling both dimensions.
@@ -303,6 +312,7 @@ int doPlayerMove(char** map, int maxRow, int maxCol, Player& player, int nextRow
 bool doMonsterAttack(char** map, int maxRow, int maxCol, const Player& player) {
     // Directions to check for monsters
     int directions[4][2] = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+    bool playerKilled = false;
 
     for(int d = 0; d < 4; d++) {
         int dx = directions[d][0];
@@ -326,7 +336,7 @@ bool doMonsterAttack(char** map, int maxRow, int maxCol, const Player& player) {
                     map[checkRow - dx][checkCol - dy] = TILE_MONSTER;
                     // Check if the monster has moved onto the player's tile
                     if (checkRow - dx == player.row && checkCol - dy == player.col) {
-                        return true;
+                        playerKilled = true;
                     }
                     break;
 
@@ -343,5 +353,5 @@ bool doMonsterAttack(char** map, int maxRow, int maxCol, const Player& player) {
         }
     }
 
-    return false;
+    return playerKilled;
 }
