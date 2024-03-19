@@ -59,4 +59,5 @@ int main() {
     append(v, length, size, 4);
     printArray(v, length);
 
+    delete[] v;
 }
