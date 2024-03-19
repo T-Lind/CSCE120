@@ -1,6 +1,8 @@
 #include "functions.h"
+#include <iostream>
 
-using std::cin, std::cout, std::endl, std::ostream, std::string;
+using std::cout;
+using std::endl;
 
 #define INFO(X)  cout << "[INFO] ("<<__FUNCTION__<<":"<<__LINE__<<") " << #X << " = " << X << endl;
 #define INFO_STRUCT(X) cout << "[INFO] ("<<__FUNCTION__<<":"<<__LINE__<<") " << #X << " count = " << X.count << endl;
@@ -16,14 +18,20 @@ void push(Stack &stack, int number) {
     INFO(number)
 
     if (stack.count == stack.capacity) {
-        int *newNums = new int[stack.capacity * 2]{};
-        for (int i = 0; i < stack.capacity; i++) {
-            newNums[i] = stack.numbers[i];
+        int newCapacity = stack.capacity * 2;
+        int *newNumbers = new int[newCapacity];
+        for (int i = 0; i < stack.count; ++i) {
+            newNumbers[i] = stack.numbers[i];
         }
+
         delete[] stack.numbers;
-        stack.numbers = newNums;
-        stack.capacity *= 2;
+
+        stack.numbers = newNumbers;
+        stack.capacity = newCapacity;
     }
+
+    stack.numbers[stack.count] = number;
+    stack.count++;
 }
 
 /**
@@ -37,18 +45,19 @@ int pop(Stack &stack) {
 
     if (stack.count == 0) {
         return 2147483647;
-    } else {
-        int popped = stack.numbers[stack.count - 1];
-        stack.numbers[stack.count - 1] = 0;
-        stack.count--;
-        return popped;
     }
+
+    int topElement = stack.numbers[stack.count - 1];
+
+    stack.count--;
+
+    return topElement;
 }
 
 /**
  * ----- REQUIRED -----
  * Returns the number at top of stack without popping it. If stack is empty, return INT32_MAX.
- * @param   stack   Target statck.
+ * @param   stack   Target stack.
  * @return          Number at top of stack.
  */
 int peek(const Stack &stack) {
@@ -56,7 +65,6 @@ int peek(const Stack &stack) {
 
     if (stack.count == 0) {
         return 2147483647;
-    } else {
-        return stack.numbers[stack.count - 1];
     }
+    return stack.numbers[stack.count - 1];
 }
