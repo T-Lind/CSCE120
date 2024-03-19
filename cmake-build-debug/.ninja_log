@@ -1,12 +1,8 @@
 # ninja log v5
-1	536	7319781920145326	build.ninja	99e288cfc5f75395
-375	588	7319780247290985	CSCE120.exe	d52dc70b350f9cb8
+1	536	7325583561626021	build.ninja	99e288cfc5f75395
+461	548	7325583031294898	CSCE120.exe	85f5a2e1d0237341
 3	566	7319665887880383	CMakeFiles/CSCE120.dir/linear_transformations/main.cpp.obj	68e52fedf14b7069
 6	594	7319776888604277	CMakeFiles/CSCE120.dir/dungeon_crawler/helper.cpp.obj	7efe636a3de54b48
-3	374	7319780245223911	CMakeFiles/CSCE120.dir/dungeon_crawler/logic.cpp.obj	8728743a2feccf78
-0	601	7319776888644492	CMakeFiles/CSCE120.dir/dungeon_crawler/dungeoncrawler.cpp.obj	b7482d630af42917
-3	346	7319782230086809	CMakeFiles/CSCE120.dir/dungeon_crawler/dungeoncrawler.cpp.obj	b7482d630af42917
-347	441	7319782231005576	CSCE120.exe	d52dc70b350f9cb8
-3	459	7319790106797097	CMakeFiles/CSCE120.dir/dungeon_crawler/logic.cpp.obj	8728743a2feccf78
 3	331	7319790598955891	CMakeFiles/CSCE120.dir/dungeon_crawler/logic.cpp.obj	8728743a2feccf78
-331	421	7319790599811999	CSCE120.exe	d52dc70b350f9cb8
+3	346	7319782230086809	CMakeFiles/CSCE120.dir/dungeon_crawler/dungeoncrawler.cpp.obj	b7482d630af42917
+2	461	7325583030465138	CMakeFiles/CSCE120.dir/ex7.cpp.obj	fb22db2d6d1df8ae
