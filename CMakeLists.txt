@@ -3,5 +3,4 @@ project(CSCE120)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(CSCE120
-        in_class_example_9/ex7.cpp)
+add_executable(CSCE120 calculator/calculator.cpp calculator/functions.h calculator/functions.cpp)
