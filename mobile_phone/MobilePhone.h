@@ -8,6 +8,7 @@
 
 class MobilePhone {
 public:
+    MobilePhone();
     MobilePhone(std::string model, std::string userName, std::string phoneNumber);
 
     ~MobilePhone();

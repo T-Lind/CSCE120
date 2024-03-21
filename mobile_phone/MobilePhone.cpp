@@ -3,6 +3,15 @@
 //
 
 #include "MobilePhone.h"
+
+
+MobilePhone::MobilePhone() { // default constructor
+    this->model = "Unknown";
+    this->userName = "Unknown";
+    this->phoneNumber = "Unknown";
+    this->storageBytes = 1000000;   // Let's say this is the initial data on the phone (OS or something)
+}
+
 MobilePhone::MobilePhone(std::string model, std::string userName, std::string phoneNumber) {
     this->model = model;
     this->userName = userName;
@@ -41,3 +50,4 @@ void MobilePhone::removeStorage(int storageAmountBytes) {
 int MobilePhone::getStorageBytes() const {
     return storageBytes;
 }
+
