@@ -4,6 +4,6 @@ project(CSCE120)
 set(CMAKE_CXX_STANDARD 17)
 
 add_executable(CSCE120
-        mobile_phone/MobilePhone.cpp
-        mobile_phone/MobilePhone.h
-        mobile_phone/main.cpp)
+        op_overload/add_operator_overload.cpp
+        op_overload/vector.h
+        op_overload/vector.cpp)
