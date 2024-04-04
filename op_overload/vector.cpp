@@ -77,12 +77,4 @@ int &vector::operator[](const int index) const {
     return this->at(index);
 }
 
-ostream &operator<<(ostream &os, const vector &v) {
-    for (int i = 0; i < v.size(); i++) {
-        os << v[i] << "\t";
-    }
-    cout << endl;
-
-    return os;
-}
 
