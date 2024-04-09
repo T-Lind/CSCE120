@@ -7,9 +7,8 @@ class Passport {
 	private:
 		std::string camperName;
 		bool isJuniorPassport;
-		std::vector<StatePark*> parksVisited;
-		
-		double getMilesHiked();
+
+    double getMilesHiked();
 
 	public:
 		Passport(std::string camperName, bool isJuniorPassport);
@@ -19,6 +18,8 @@ class Passport {
 		int getHikerLevel();
 
 		StatePark* getParkAt(unsigned int i) { return parksVisited.at(i); }
+
+    std::vector<StatePark*> parksVisited;
 };
 
 # endif

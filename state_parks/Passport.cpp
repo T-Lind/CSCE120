@@ -2,10 +2,9 @@
 
 using std::string, std::vector;
 
-// TODO: implement constructor using member initializer list
+Passport::Passport(std::string camperName, bool isJuniorPassport) : camperName(camperName), isJuniorPassport(isJuniorPassport), parksVisited() {}
 
 string Passport::getCamperName() {
-	// TODO: implement getter
     return camperName;
 }
 
@@ -15,11 +14,15 @@ bool Passport::checkJuniorPassport() {
 
 void Passport::addParkVisited(StatePark* park) {
 	INFO(park)
+
+    if (park == nullptr) {
+        return;
+    }
     parksVisited.push_back(park);
+    park->addCamper(this);
 }
 
 double Passport::getMilesHiked() {
-	// TODO: (optional) implement function
     double miles = 0;
     for (auto & i : parksVisited) {
         miles += i->getTrailMiles();
@@ -28,7 +31,10 @@ double Passport::getMilesHiked() {
 }
 
 int Passport::getHikerLevel() {
-// 100 miles = 1 level
-    double milesHiked = getMilesHiked();
-    return milesHiked / 100;
+    double miles = getMilesHiked();
+    if (isJuniorPassport) {
+        miles *= 2;
+    }
+    return static_cast<int>(miles / 100);
 }
+

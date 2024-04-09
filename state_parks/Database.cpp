@@ -2,8 +2,7 @@
 
 using std::string, std::vector;
 
-// TODO: implement constructor using member initializer list
-
+Database::Database(): stateParkList(), camperList() {}
 
 Database::~Database() {
 	for (unsigned int i = 0; i < stateParkList.size(); ++i) {
@@ -20,8 +19,6 @@ void Database::addStatePark(string parkName, double entranceFee, double trailMil
 	INFO(entranceFee)
 	INFO(trailMiles)
 
-	// TODO: implement function
-
     StatePark* park = new StatePark(parkName, entranceFee, trailMiles);
     stateParkList.push_back(park);
 }
@@ -29,8 +26,6 @@ void Database::addStatePark(string parkName, double entranceFee, double trailMil
 void Database::addPassport(string camperName, bool isJuniorPassport) {
 	INFO(camperName)
 	INFO(isJuniorPassport)
-
-	// TODO: implement function
 
     Passport* camper = new Passport(camperName, isJuniorPassport);
     camperList.push_back(camper);
@@ -40,28 +35,27 @@ void Database::addParkToPassport(string camperName, string parkName) {
 	INFO(camperName)
 	INFO(parkName)
 
+    StatePark *park = nullptr;
+    Passport *camper = nullptr;
 
-        StatePark* park = nullptr;
-        Passport* camper = nullptr;
-
-        for (auto & i : stateParkList) {
-            if (i->getParkName() == parkName) {
-                park = i;
-                break;
-            }
+    for (auto &i: stateParkList) {
+        if (i->getParkName() == parkName) {
+            park = i;
+            break;
         }
+    }
 
-        for (auto & i : camperList) {
-            if (i->getCamperName() == camperName) {
-                camper = i;
-                break;
-            }
+    for (auto &i: camperList) {
+        if (i->getCamperName() == camperName) {
+            camper = i;
+            break;
         }
+    }
 
-        if (park != nullptr && camper != nullptr) {
-            park->addCamper(camper);
-            camper->addParkVisited(park);
-        }
+    if (park != nullptr && camper != nullptr) {
+        park->addCamper(camper);
+        camper->addParkVisited(park);
+    }
 }
 
 vector<string> Database::getParksInRevenueRange(double lowerBound, double upperBound) {
