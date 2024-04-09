@@ -1,6 +1,6 @@
 # ninja log v5
-1	536	7341435208821937	build.ninja	99e288cfc5f75395
-331	419	7339607574430893	CSCE120.exe	1f39b67bd5f9aa2f
+1	536	7343877085452684	build.ninja	99e288cfc5f75395
+625	977	7341446750130521	CSCE120.exe	64a093f641a34911
 3	566	7319665887880383	CMakeFiles/CSCE120.dir/linear_transformations/main.cpp.obj	68e52fedf14b7069
 6	594	7319776888604277	CMakeFiles/CSCE120.dir/dungeon_crawler/helper.cpp.obj	7efe636a3de54b48
 3	331	7319790598955891	CMakeFiles/CSCE120.dir/dungeon_crawler/logic.cpp.obj	8728743a2feccf78
@@ -11,8 +11,6 @@
 7	453	7327333690554981	CMakeFiles/CSCE120.dir/mobile_phone/main.cpp.obj	c702f93ab4f47557
 2	330	7339607573566452	CMakeFiles/CSCE120.dir/exam_2_study/Exam2Study.cpp.obj	7b2558026ea4a7fe
 7	620	7341436930949691	CMakeFiles/CSCE120.dir/crazy_8s/Card.cpp.obj	9be8af16f8402301
-0	624	7341436930989716	CMakeFiles/CSCE120.dir/crazy_8s/main.cpp.obj	81b4e6d39eaab7ee
-18	628	7341436931028923	CMakeFiles/CSCE120.dir/crazy_8s/Player.cpp.obj	b443cddec08fe359
 3	438	7341446744787543	CMakeFiles/CSCE120.dir/crazy_8s/main.cpp.obj	81b4e6d39eaab7ee
+18	628	7341436931028923	CMakeFiles/CSCE120.dir/crazy_8s/Player.cpp.obj	b443cddec08fe359
 12	625	7341446746641784	CMakeFiles/CSCE120.dir/crazy_8s/Game.cpp.obj	5ef63b3174540f88
-625	977	7341446750130521	CSCE120.exe	64a093f641a34911

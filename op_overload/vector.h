@@ -29,7 +29,11 @@ public:
     }
 
 
-    ~vector() { delete[] buffer; }
+    ~vector() {
+        delete[] buffer;
+        buffer = nullptr;
+    }
+
 
     int &at(int index) const;
 
