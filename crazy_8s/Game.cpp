@@ -67,6 +67,11 @@ void Game::loadDeckFromFile(string filename) {
         } catch (std::invalid_argument& e) {
             throw std::runtime_error("Invalid card");
         }
+
+        // If a card has extra data, throw exception
+        if (ss >> rank) {
+            throw std::runtime_error("Extra data on line");
+        }
     }
 
     file.close();

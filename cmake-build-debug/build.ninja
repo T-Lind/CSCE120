@@ -49,29 +49,29 @@ cmake_ninja_workdir = C$:/Users/tenant/CLionProjects/CSCE120/cmake-build-debug/
 
 build cmake_object_order_depends_target_CSCE120: phony || CMakeFiles/CSCE120.dir
 
-build CMakeFiles/CSCE120.dir/state_parks/StatePark.cpp.obj: CXX_COMPILER__CSCE120_unscanned_Debug C$:/Users/tenant/CLionProjects/CSCE120/state_parks/StatePark.cpp || cmake_object_order_depends_target_CSCE120
-  DEP_FILE = CMakeFiles\CSCE120.dir\state_parks\StatePark.cpp.obj.d
+build CMakeFiles/CSCE120.dir/crazy_8s/main.cpp.obj: CXX_COMPILER__CSCE120_unscanned_Debug C$:/Users/tenant/CLionProjects/CSCE120/crazy_8s/main.cpp || cmake_object_order_depends_target_CSCE120
+  DEP_FILE = CMakeFiles\CSCE120.dir\crazy_8s\main.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\CSCE120.dir
-  OBJECT_FILE_DIR = CMakeFiles\CSCE120.dir\state_parks
+  OBJECT_FILE_DIR = CMakeFiles\CSCE120.dir\crazy_8s
 
-build CMakeFiles/CSCE120.dir/state_parks/Passport.cpp.obj: CXX_COMPILER__CSCE120_unscanned_Debug C$:/Users/tenant/CLionProjects/CSCE120/state_parks/Passport.cpp || cmake_object_order_depends_target_CSCE120
-  DEP_FILE = CMakeFiles\CSCE120.dir\state_parks\Passport.cpp.obj.d
+build CMakeFiles/CSCE120.dir/crazy_8s/Game.cpp.obj: CXX_COMPILER__CSCE120_unscanned_Debug C$:/Users/tenant/CLionProjects/CSCE120/crazy_8s/Game.cpp || cmake_object_order_depends_target_CSCE120
+  DEP_FILE = CMakeFiles\CSCE120.dir\crazy_8s\Game.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\CSCE120.dir
-  OBJECT_FILE_DIR = CMakeFiles\CSCE120.dir\state_parks
+  OBJECT_FILE_DIR = CMakeFiles\CSCE120.dir\crazy_8s
 
-build CMakeFiles/CSCE120.dir/state_parks/Driver.cpp.obj: CXX_COMPILER__CSCE120_unscanned_Debug C$:/Users/tenant/CLionProjects/CSCE120/state_parks/Driver.cpp || cmake_object_order_depends_target_CSCE120
-  DEP_FILE = CMakeFiles\CSCE120.dir\state_parks\Driver.cpp.obj.d
+build CMakeFiles/CSCE120.dir/crazy_8s/Card.cpp.obj: CXX_COMPILER__CSCE120_unscanned_Debug C$:/Users/tenant/CLionProjects/CSCE120/crazy_8s/Card.cpp || cmake_object_order_depends_target_CSCE120
+  DEP_FILE = CMakeFiles\CSCE120.dir\crazy_8s\Card.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\CSCE120.dir
-  OBJECT_FILE_DIR = CMakeFiles\CSCE120.dir\state_parks
+  OBJECT_FILE_DIR = CMakeFiles\CSCE120.dir\crazy_8s
 
-build CMakeFiles/CSCE120.dir/state_parks/Database.cpp.obj: CXX_COMPILER__CSCE120_unscanned_Debug C$:/Users/tenant/CLionProjects/CSCE120/state_parks/Database.cpp || cmake_object_order_depends_target_CSCE120
-  DEP_FILE = CMakeFiles\CSCE120.dir\state_parks\Database.cpp.obj.d
+build CMakeFiles/CSCE120.dir/crazy_8s/Player.cpp.obj: CXX_COMPILER__CSCE120_unscanned_Debug C$:/Users/tenant/CLionProjects/CSCE120/crazy_8s/Player.cpp || cmake_object_order_depends_target_CSCE120
+  DEP_FILE = CMakeFiles\CSCE120.dir\crazy_8s\Player.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\CSCE120.dir
-  OBJECT_FILE_DIR = CMakeFiles\CSCE120.dir\state_parks
+  OBJECT_FILE_DIR = CMakeFiles\CSCE120.dir\crazy_8s
 
 
 # =============================================================================
@@ -81,7 +81,7 @@ build CMakeFiles/CSCE120.dir/state_parks/Database.cpp.obj: CXX_COMPILER__CSCE120
 #############################################
 # Link the executable CSCE120.exe
 
-build CSCE120.exe: CXX_EXECUTABLE_LINKER__CSCE120_Debug CMakeFiles/CSCE120.dir/state_parks/StatePark.cpp.obj CMakeFiles/CSCE120.dir/state_parks/Passport.cpp.obj CMakeFiles/CSCE120.dir/state_parks/Driver.cpp.obj CMakeFiles/CSCE120.dir/state_parks/Database.cpp.obj
+build CSCE120.exe: CXX_EXECUTABLE_LINKER__CSCE120_Debug CMakeFiles/CSCE120.dir/crazy_8s/main.cpp.obj CMakeFiles/CSCE120.dir/crazy_8s/Game.cpp.obj CMakeFiles/CSCE120.dir/crazy_8s/Card.cpp.obj CMakeFiles/CSCE120.dir/crazy_8s/Player.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\CSCE120.dir

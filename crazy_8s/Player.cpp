@@ -29,11 +29,30 @@ std::string Player::getHandString() {
 
 Card *Player::playCard(vector<string> const &suits, string &currentRank, string &currentSuit) {
     if (isAI) {
+        for (auto it = hand.begin(); it != hand.end(); it++) {
+            if ((*it)->canBePlayed(currentRank, currentSuit)) {
+                Card *cardToPlay = *it;
+                hand.erase(it);
+                cardToPlay->play();
+                currentRank = cardToPlay->getRank();
+                if (currentRank == "8") {
+                    if (!hand.empty()) {
+                        currentSuit = hand.front()->getSuit();
+                    } else {
+                        currentSuit = suits.front();
+                    }
+                } else {
+                    currentSuit = cardToPlay->getSuit();
+                }
+                return cardToPlay;
+            }
+        }
+        return nullptr;
     } else {
+        std::cout << "Your hand contains: " << getHandString() << "\n";
+        std::cout << "The next card played must be a " << currentRank << " or " << currentSuit << "\n";
+        std::cout << "What would you like to play? (enter \"draw card\" to draw a card)\n";
         while (true) {
-            std::cout << "Your hand contains: " << getHandString() << "\n";
-            std::cout << "The next card played must be a " << currentRank << " or " << currentSuit << "\n";
-            std::cout << "What would you like to play? (enter \"draw card\" to draw a card)\n";
             string input;
             std::getline(std::cin, input);
 
@@ -53,8 +72,8 @@ Card *Player::playCard(vector<string> const &suits, string &currentRank, string 
                         currentRank = cardToPlay->getRank();
                         currentSuit = cardToPlay->getSuit();
                         if (currentRank == "8") {
+                            std::cout << "What suit would you like to declare?\n";
                             while (true) {
-                                std::cout << "What suit would you like to declare?\n";
                                 string newSuit;
                                 std::getline(std::cin, newSuit);
 
