@@ -10,9 +10,6 @@ void vector::resize(int new_capacity) {
     int *temp = buffer;
     buffer = new int[new_capacity];
 
-    // int *x = new int(2);
-    // delete x;
-
     for (int i = 0; i < length; i++) {
         buffer[i] = temp[i];
     }

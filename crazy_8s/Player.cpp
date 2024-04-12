@@ -35,19 +35,11 @@ Card *Player::playCard(vector<string> const &suits, string &currentRank, string 
                 hand.erase(it);
                 cardToPlay->play();
                 currentRank = cardToPlay->getRank();
-                if (currentRank == "8") {
-                    if (!hand.empty()) {
-                        currentSuit = hand.front()->getSuit();
-                    } else {
-                        currentSuit = suits.front();
-                    }
-                } else {
-                    currentSuit = cardToPlay->getSuit();
-                }
+                currentSuit = cardToPlay->getSuit();
                 return cardToPlay;
             }
         }
-        return nullptr;
+
     } else {
         std::cout << "Your hand contains: " << getHandString() << "\n";
         std::cout << "The next card played must be a " << currentRank << " or " << currentSuit << "\n";
