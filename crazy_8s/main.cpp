@@ -50,7 +50,12 @@ void setupPlayers(Game &g, int numPlayers) {
                 std::cout << "Please enter y or n" << std::endl;
             }
         }
-        g.addPlayer(new Player(input == "y"));
+        if (input == "y") {
+            g.addPlayer(true);
+        } else {
+            g.addPlayer(false);
+        }
+
     }
 }
 
@@ -72,8 +77,7 @@ void setupGame(Game &g) {
 
     // Deal the cards
     g.deal(numCards);
-    Card *initialDiscard = g.discardPile.back();
-    std::cout << "The initial discard is " << initialDiscard->getRank() << " " << initialDiscard->getSuit() << std::endl;
+    std::cout << "The initial discard is " << g.discardPile.at(0)->getRank() << " " << g.discardPile.at(0)->getSuit() << std::endl;
 }
 
 int main() {

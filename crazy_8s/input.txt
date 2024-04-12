@@ -1,0 +1,20 @@
+C:\Users\tenant\CLionProjects\CSCE120\crazy_8s\data\microDeck.txt
+hi
+0
+2
+q
+n
+y
+none
+5
+8 Hearts
+4 Spades
+7 Spades
+8 Clubs
+Squares
+Spades
+4 Spades
+9 Hearts
+draw card
+draw card
+draw card

@@ -143,8 +143,18 @@ int Game::runGame() {
     while (true) {
         for (Player* player : players) {
             std::cout << "Player " << currentPlayer << "'s turn!" << std::endl;
-            std::string currentRank = discardPile.back()->getRank();
-            std::string currentSuit = discardPile.back()->getSuit();
+            std::string currentRank;
+            std::string currentSuit;
+            if (discardPile.empty()) {
+                discardPile.push_back(deal(1));
+                currentRank = discardPile.back()->getRank();
+                currentSuit = discardPile.back()->getSuit();
+            } else {
+                currentRank = discardPile.back()->getRank();
+                currentSuit = discardPile.back()->getSuit();
+            }
+
+
             Card* card = player->playCard(suits, currentRank, currentSuit);
             if (card) {
                 if (card->getRank() == "8") {
