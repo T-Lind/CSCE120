@@ -41,7 +41,7 @@ void Game::loadDeckFromFile(string filename) {
         }
 
         bool rankFound = false;
-        for (const auto& r : ranks) {
+        for (const auto &r: ranks) {
             if (r == rank) {
                 rankFound = true;
                 break;
@@ -49,7 +49,7 @@ void Game::loadDeckFromFile(string filename) {
         }
 
         bool suitFound = false;
-        for (const auto& s : suits) {
+        for (const auto &s: suits) {
             if (s == suit) {
                 suitFound = true;
                 break;
@@ -61,10 +61,10 @@ void Game::loadDeckFromFile(string filename) {
         }
 
         try {
-            Card* card = new Card(rank, suit);
+            Card *card = new Card(rank, suit);
             deck.push_back(card);
             drawPile.insert(drawPile.begin(), card);
-        } catch (std::invalid_argument& e) {
+        } catch (std::invalid_argument &e) {
             throw std::runtime_error("Invalid card");
         }
 
@@ -78,11 +78,11 @@ void Game::loadDeckFromFile(string filename) {
 }
 
 void Game::addPlayer(bool isAI) {
-    Player* newPlayer = new Player(isAI);
+    Player *newPlayer = new Player(isAI);
     players.push_back(newPlayer);
 }
 
-void Game::drawCard(Player* p) {
+void Game::drawCard(Player *p) {
     if (drawPile.empty()) {
         if (discardPile.empty()) {
             throw std::runtime_error("Both draw pile and discard pile are empty");
@@ -95,22 +95,22 @@ void Game::drawCard(Player* p) {
         }
     }
 
-    Card* card = drawPile.back();
+    Card *card = drawPile.back();
     drawPile.pop_back();
     p->addToHand(card);
 }
 
-Card* Game::deal(int numCards) {
+Card *Game::deal(int numCards) {
     if (drawPile.empty()) {
         throw std::runtime_error("Draw pile is empty");
     }
 
-    Card* initialDiscard = drawPile.back();
+    Card *initialDiscard = drawPile.back();
     drawPile.pop_back();
     discardPile.push_back(initialDiscard);
 
     for (int i = 0; i < numCards; i++) {
-        for (Player* player : players) {
+        for (Player *player: players) {
             drawCard(player);
         }
     }
@@ -122,9 +122,9 @@ string Game::mostPlayedSuit() {
     int maxCount = -1;
     string mostPlayedSuit;
 
-    for (const auto& suit : suits) {
+    for (const auto &suit: suits) {
         int count = 0;
-        for (Card* card : deck) {
+        for (Card *card: deck) {
             if (card->getSuit() == suit) {
                 count += card->getTimesPlayed();
             }
@@ -141,7 +141,7 @@ string Game::mostPlayedSuit() {
 int Game::runGame() {
     int currentPlayer = 0;
     while (true) {
-        for (Player* player : players) {
+        for (Player *player: players) {
             std::cout << "Player " << currentPlayer << "'s turn!" << std::endl;
             std::string currentRank;
             std::string currentSuit;
@@ -155,14 +155,16 @@ int Game::runGame() {
             }
 
 
-            Card* card = player->playCard(suits, currentRank, currentSuit);
+            Card *card = player->playCard(suits, currentRank, currentSuit);
             if (card) {
-                if (card->getRank() == "8") {
-                    std::cout << "Player " << currentPlayer << " plays " << card->getRank() << " " << card->getSuit() << " and changes the suit to " << card->getSuit() << "." << std::endl;
-                } else {
-                    std::cout << "Player " << currentPlayer << " plays " << card->getRank() << " " << card->getSuit() << "." << std::endl;
-                }
                 discardPile.push_back(card);
+                if (card->getRank() == "8") {
+                    std::cout << "Player " << currentPlayer << " plays " << card->getRank() << " " << card->getSuit()
+                              << " and changes the suit to " << card->getSuit() << "." << std::endl;
+                } else {
+                    std::cout << "Player " << currentPlayer << " plays " << card->getRank() << " " << card->getSuit()
+                              << "." << std::endl;
+                }
                 if (player->getHandSize() == 0) {
                     return currentPlayer;
                 }
@@ -170,7 +172,7 @@ int Game::runGame() {
                 try {
                     drawCard(player);
                     std::cout << "Player " << currentPlayer << " draws a card." << std::endl;
-                } catch (std::runtime_error& e) {
+                } catch (std::runtime_error &e) {
                     std::cout << "Player " << currentPlayer << " cannot draw a card." << std::endl;
                     return -1;
                 }
@@ -182,10 +184,10 @@ int Game::runGame() {
 
 // Destructor--Deallocates all the dynamic memory we allocated
 Game::~Game() {
-  for (unsigned int i = 0; i < deck.size(); i++) {
-    delete deck.at(i);
-  }
-  for (unsigned int i = 0; i < players.size(); i++) {
-    delete players.at(i);
-  }
+    for (unsigned int i = 0; i < deck.size(); i++) {
+        delete deck.at(i);
+    }
+    for (unsigned int i = 0; i < players.size(); i++) {
+        delete players.at(i);
+    }
 }
