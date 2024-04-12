@@ -26,15 +26,12 @@ int getPlayerCount() {
     while (true) {
         if ((!(std::cin >> numPlayers)) || numPlayers <= 0) {
             if (std::cin.fail()) {
-                // Clear the fail flag
                 std::cin.clear();
-                // Remove the non-integer data from the stream
                 string garbage;
                 std::cin >> garbage;
             }
             std::cout << "Please enter a positive number" << std::endl;
         } else {
-            // break out of the loop once we've read a valid number
             break;
         }
     }
@@ -58,27 +55,25 @@ void setupPlayers(Game &g, int numPlayers) {
 }
 
 void setupGame(Game &g) {
-    // Ask the user how many cards each player should start with
     std::cout << "How many cards should each player start with?" << std::endl;
     int numCards;
     while (true) {
         if ((!(std::cin >> numCards)) || numCards <= 0) {
             if (std::cin.fail()) {
-                // Clear the fail flag
                 std::cin.clear();
-                // Remove the non-integer data from the stream
                 std::string garbage;
                 std::cin >> garbage;
             }
             std::cout << "Please enter a positive number" << std::endl;
         } else {
-            // break out of the loop once we've read a valid number
             break;
         }
     }
 
     // Deal the cards
     g.deal(numCards);
+    Card *initialDiscard = g.discardPile.back();
+    std::cout << "The initial discard is " << initialDiscard->getRank() << " " << initialDiscard->getSuit() << std::endl;
 }
 
 int main() {

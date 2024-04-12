@@ -14,9 +14,9 @@ class Game {
   std::vector<std::string> ranks;
   std::vector<Card*> deck;
   std::vector<Card*> drawPile;
-  std::vector<Card*> discardPile;
 
  public:
+  std::vector<Card*> discardPile;
   Game();
   void loadDeckFromFile(std::string filename);
   void addPlayer(bool isAI);

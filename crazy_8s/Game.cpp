@@ -87,7 +87,7 @@ void Game::drawCard(Player* p) {
         if (discardPile.empty()) {
             throw std::runtime_error("Both draw pile and discard pile are empty");
         } else {
-            std::cout << "Draw pile empty flipping the discard pile." << std::endl;
+            std::cout << "Draw pile, empty, flipping the discard pile." << std::endl;
             while (!discardPile.empty()) {
                 drawPile.push_back(discardPile.back());
                 discardPile.pop_back();
@@ -147,9 +147,10 @@ int Game::runGame() {
             std::string currentSuit = discardPile.back()->getSuit();
             Card* card = player->playCard(suits, currentRank, currentSuit);
             if (card) {
-                std::cout << "Playing " << card->getRank() << " of " << card->getSuit() << std::endl;
                 if (card->getRank() == "8") {
-                    std::cout << "New suit is " << card->getSuit() << std::endl;
+                    std::cout << "Player " << currentPlayer << " plays " << card->getRank() << " " << card->getSuit() << " and changes the suit to " << card->getSuit() << "." << std::endl;
+                } else {
+                    std::cout << "Player " << currentPlayer << " plays " << card->getRank() << " " << card->getSuit() << "." << std::endl;
                 }
                 discardPile.push_back(card);
                 if (player->getHandSize() == 0) {
@@ -158,7 +159,7 @@ int Game::runGame() {
             } else {
                 try {
                     drawCard(player);
-                    std::cout << "Drawing a card." << std::endl;
+                    std::cout << "Player " << currentPlayer << " draws a card." << std::endl;
                 } catch (std::runtime_error& e) {
                     std::cout << "Player " << currentPlayer << " cannot draw a card." << std::endl;
                     return -1;
