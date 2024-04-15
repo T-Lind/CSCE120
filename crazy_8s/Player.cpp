@@ -5,10 +5,7 @@
 
 using std::vector, std::string, std::size_t;
 
-Player::Player(bool isAI) {
-    this->isAI = isAI;
-    this->hand = {};
-}
+Player::Player(bool isAI) : isAI(isAI), hand({}) {}
 
 void Player::addToHand(Card *c) {
     hand.push_back(c);

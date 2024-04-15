@@ -41,21 +41,19 @@ int getPlayerCount() {
 void setupPlayers(Game &g, int numPlayers) {
     for (int i = 0; i < numPlayers; i++) {
         std::string input;
+        std::cout << "Is player " << i << " an AI? (y/n)" << std::endl;
         while (true) {
-            std::cout << "Is player " << i << " an AI? (y/n)" << std::endl;
             std::cin >> input;
-            if (input == "y" || input == "n") {
+            if (input == "y") {
+                g.addPlayer(true);
+                break;
+            } else if (input == "n") {
+                g.addPlayer(false);
                 break;
             } else {
                 std::cout << "Please enter y or n" << std::endl;
             }
         }
-        if (input == "y") {
-            g.addPlayer(true);
-        } else {
-            g.addPlayer(false);
-        }
-
     }
 }
 

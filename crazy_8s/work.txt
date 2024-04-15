@@ -1,0 +1,57 @@
+Choose a file to load the deck from:
+Enter number of players:
+Please enter a positive number
+Please enter a positive number
+Is player 0 an AI? (y/n)
+Please enter y or n
+Is player 1 an AI? (y/n)
+How many cards should each player start with?
+Please enter a positive number
+The initial discard is 7 Hearts
+Player 0's turn!
+Your hand contains: 8 Clubs, 7 Spades, 4 Spades, 9 Hearts, 5 Hearts
+The next card played must be a 7 or Hearts
+What would you like to play? (enter "draw card" to draw a card)
+That's not a card you have. Try again.
+That's not a card you have. Try again.
+You can't play that card. Try again.
+Player 0 draws a card.
+Player 1's turn!
+Player 1 plays 7 Clubs.
+Player 0's turn!
+Your hand contains: 8 Clubs, 7 Spades, 4 Spades, 9 Hearts, 5 Hearts, 8 Hearts
+The next card played must be a 7 or Clubs
+What would you like to play? (enter "draw card" to draw a card)
+Player 0 plays 7 Spades.
+Player 1's turn!
+Draw pile, empty, flipping the discard pile.
+Player 1 draws a card.
+Player 0's turn!
+Draw pile, empty, flipping the discard pile.
+Your hand contains: 8 Clubs, 4 Spades, 9 Hearts, 5 Hearts, 8 Hearts, 7 Spades
+The next card played must be a 7 or Clubs
+What would you like to play? (enter "draw card" to draw a card)
+What suit would you like to declare?
+That's not a suit in this deck. Try again.
+Player 0 plays 8 Clubs and changes the suit to Clubs.
+Player 1's turn!
+Player 1 plays 3 Clubs.
+Player 0's turn!
+Your hand contains: 4 Spades, 9 Hearts, 5 Hearts, 8 Hearts, 7 Spades
+The next card played must be a 3 or Clubs
+What would you like to play? (enter "draw card" to draw a card)
+You can't play that card. Try again.
+Draw pile, empty, flipping the discard pile.
+Player 0 draws a card.
+Player 1's turn!
+Draw pile, empty, flipping the discard pile.
+Player 1 plays 10 Clubs.
+Player 0's turn!
+Your hand contains: 4 Spades, 9 Hearts, 5 Hearts, 8 Hearts, 7 Spades, 7 Clubs, 3 Clubs
+The next card played must be a 10 or Clubs
+What would you like to play? (enter "draw card" to draw a card)
+You can't play that card. Try again.
+Draw pile, empty, flipping the discard pile.
+Player 0 draws a card.
+Player 1's turn!
+Draw pile, empty, flipping the discard pile.
