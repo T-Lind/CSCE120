@@ -7,7 +7,6 @@
 
 using std::cout, std::endl, std::string, std::ifstream, std::ofstream;
 
-// TODO: implement rule of three functions
 
 Image::Image() : image(nullptr), width(0), height(0) {}
 
@@ -34,6 +33,13 @@ void Image::allocateImage(unsigned int width, unsigned int height) {
 
 void Image::clear() {
     // TODO: update for rule of three
+    if (image == nullptr) {
+        return;
+    }
+
+    for (unsigned int col = 0; col < width; col++) {
+        delete [] image[col];
+    }
 
     delete [] image;
     width = 0;
@@ -98,12 +104,12 @@ void Image::load(string filename) {
 void Image::output(string filename) {
     cout << "Outputting image..." << endl;
     ofstream ofs (filename);
-  
+
     if (!ofs.is_open()) {
         cout << "Error: failed to open output file " << filename << endl;
         return;
     }
-  
+
     ofs << "P3" << endl;
     ofs << width << " " << height << endl;
     ofs << 255 << endl;
@@ -125,7 +131,7 @@ void Image::makeGreyscale() {
             int greyColor = round((image[col][row].getRed() + image[col][row].getGreen() + image[col][row].getBlue()) / 3.0);
             image[col][row] = Pixel(greyColor, greyColor, greyColor);
         }
-    }  
+    }
 }
 
 void Image::makeSepia() {
@@ -138,10 +144,10 @@ void Image::makeSepia() {
             if (newGreen > 255) newGreen = 255;
             int newBlue = round((0.272 * image[col][row].getRed() + 0.534 * image[col][row].getGreen() + 0.131 * image[col][row].getBlue()));
             if (newBlue > 255) newBlue = 255;
-            
+
             image[col][row] = Pixel(newRed, newGreen, newBlue);
         }
-    }  
+    }
 }
 
 void Image::addColor(Pixel p) {
@@ -149,5 +155,42 @@ void Image::addColor(Pixel p) {
         for (unsigned int col = 0; col < width; col++) {
             image[col][row] = image[col][row] + p;
         }
-    }  
+    }
+}
+
+Image::Image(const Image &other) : image(nullptr), width(0), height(0){
+    width = other.width;
+    height = other.height;
+    image = new Pixel*[width];
+
+    for (unsigned int col = 0; col < width; col++) {
+        image[col] = new Pixel[height];
+        for (unsigned int row = 0; row < height; row++) {
+            image[col][row] = other.image[col][row];
+        }
+    }
+}
+
+Image::~Image() {
+    clear();
+}
+
+Image &Image::operator=(const Image &other) {
+    if (this == &other) {
+        return *this;
+    }
+
+    clear();
+    width = other.width;
+    height = other.height;
+    image = new Pixel*[width];
+
+    for (unsigned int col = 0; col < width; col++) {
+        image[col] = new Pixel[height];
+        for (unsigned int row = 0; row < height; row++) {
+            image[col][row] = other.image[col][row];
+        }
+    }
+
+    return *this;
 }

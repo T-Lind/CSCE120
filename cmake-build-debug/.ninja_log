@@ -17,3 +17,8 @@
 8	739	7349262431036578	CMakeFiles/CSCE120.dir/mars_rover/Rover.cpp.obj	8e04978110652f58
 4	742	7349262431046595	CMakeFiles/CSCE120.dir/mars_rover/RoverTest.cpp.obj	9c998a9726fa608
 1	743	7349262431046595	CMakeFiles/CSCE120.dir/mars_rover/MyString.cpp.obj	b5f2dff60d61f0a6
+1	610	7349930849103144	CMakeFiles/CSCE120.dir/image_manipulation/Pixel.cpp.obj	1c4123c6304acfe3
+32	612	7349930849113155	CMakeFiles/CSCE120.dir/image_manipulation/manip.cpp.obj	becdb33b29b2d887
+39	639	7349930849401321	CMakeFiles/CSCE120.dir/image_manipulation/functions.cpp.obj	390c6e48826dea48
+36	644	7349930849451326	CMakeFiles/CSCE120.dir/image_manipulation/Image.cpp.obj	610a4c3a6d6f05f7
+644	1027	7349930853238969	CSCE120.exe	66c62a470ea919fa

@@ -5,33 +5,46 @@
 # include "Pixel.h"
 
 class Image {
-    private:
-        Pixel** image;
-        unsigned int width;
-        unsigned int height;
+private:
+    Pixel **image;
+    unsigned int width;
+    unsigned int height;
 
-        void load(std::string filename);
-        void allocateImage(unsigned int width, unsigned int height);
-        void clear();
+    void load(std::string filename);
 
-    public:
-        // TODO: rule of three functions
-        
+    void allocateImage(unsigned int width, unsigned int height);
 
-        Image();
-        Image(std::string filename);
-        Image(unsigned int width, unsigned int height);
+    void clear();
 
-        Pixel*& operator[](unsigned int column);
-        const Pixel* operator[](unsigned int column) const;
-        unsigned int getWidth();
-        unsigned int getHeight();
+public:
+    // TODO: rule of three functions
+    Image(const Image &other);
 
-        void makeGreyscale();
-        void makeSepia();
-        void addColor(Pixel p);
+    Image &operator=(const Image &other);
 
-        void output(std::string filename);
+    ~Image();
+
+    Image();
+
+    Image(std::string filename);
+
+    Image(unsigned int width, unsigned int height);
+
+    Pixel *&operator[](unsigned int column);
+
+    const Pixel *operator[](unsigned int column) const;
+
+    unsigned int getWidth();
+
+    unsigned int getHeight();
+
+    void makeGreyscale();
+
+    void makeSepia();
+
+    void addColor(Pixel p);
+
+    void output(std::string filename);
 };
 
 # endif
