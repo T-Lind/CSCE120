@@ -49,23 +49,29 @@ cmake_ninja_workdir = C$:/Users/tenant/CLionProjects/CSCE120/cmake-build-debug/
 
 build cmake_object_order_depends_target_CSCE120: phony || CMakeFiles/CSCE120.dir
 
-build CMakeFiles/CSCE120.dir/mars_rover/RoverTest.cpp.obj: CXX_COMPILER__CSCE120_unscanned_Debug C$:/Users/tenant/CLionProjects/CSCE120/mars_rover/RoverTest.cpp || cmake_object_order_depends_target_CSCE120
-  DEP_FILE = CMakeFiles\CSCE120.dir\mars_rover\RoverTest.cpp.obj.d
+build CMakeFiles/CSCE120.dir/image_manipulation/Pixel.cpp.obj: CXX_COMPILER__CSCE120_unscanned_Debug C$:/Users/tenant/CLionProjects/CSCE120/image_manipulation/Pixel.cpp || cmake_object_order_depends_target_CSCE120
+  DEP_FILE = CMakeFiles\CSCE120.dir\image_manipulation\Pixel.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\CSCE120.dir
-  OBJECT_FILE_DIR = CMakeFiles\CSCE120.dir\mars_rover
+  OBJECT_FILE_DIR = CMakeFiles\CSCE120.dir\image_manipulation
 
-build CMakeFiles/CSCE120.dir/mars_rover/Rover.cpp.obj: CXX_COMPILER__CSCE120_unscanned_Debug C$:/Users/tenant/CLionProjects/CSCE120/mars_rover/Rover.cpp || cmake_object_order_depends_target_CSCE120
-  DEP_FILE = CMakeFiles\CSCE120.dir\mars_rover\Rover.cpp.obj.d
+build CMakeFiles/CSCE120.dir/image_manipulation/manip.cpp.obj: CXX_COMPILER__CSCE120_unscanned_Debug C$:/Users/tenant/CLionProjects/CSCE120/image_manipulation/manip.cpp || cmake_object_order_depends_target_CSCE120
+  DEP_FILE = CMakeFiles\CSCE120.dir\image_manipulation\manip.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\CSCE120.dir
-  OBJECT_FILE_DIR = CMakeFiles\CSCE120.dir\mars_rover
+  OBJECT_FILE_DIR = CMakeFiles\CSCE120.dir\image_manipulation
 
-build CMakeFiles/CSCE120.dir/mars_rover/MyString.cpp.obj: CXX_COMPILER__CSCE120_unscanned_Debug C$:/Users/tenant/CLionProjects/CSCE120/mars_rover/MyString.cpp || cmake_object_order_depends_target_CSCE120
-  DEP_FILE = CMakeFiles\CSCE120.dir\mars_rover\MyString.cpp.obj.d
+build CMakeFiles/CSCE120.dir/image_manipulation/Image.cpp.obj: CXX_COMPILER__CSCE120_unscanned_Debug C$:/Users/tenant/CLionProjects/CSCE120/image_manipulation/Image.cpp || cmake_object_order_depends_target_CSCE120
+  DEP_FILE = CMakeFiles\CSCE120.dir\image_manipulation\Image.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\CSCE120.dir
-  OBJECT_FILE_DIR = CMakeFiles\CSCE120.dir\mars_rover
+  OBJECT_FILE_DIR = CMakeFiles\CSCE120.dir\image_manipulation
+
+build CMakeFiles/CSCE120.dir/image_manipulation/functions.cpp.obj: CXX_COMPILER__CSCE120_unscanned_Debug C$:/Users/tenant/CLionProjects/CSCE120/image_manipulation/functions.cpp || cmake_object_order_depends_target_CSCE120
+  DEP_FILE = CMakeFiles\CSCE120.dir\image_manipulation\functions.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\CSCE120.dir
+  OBJECT_FILE_DIR = CMakeFiles\CSCE120.dir\image_manipulation
 
 
 # =============================================================================
@@ -75,7 +81,7 @@ build CMakeFiles/CSCE120.dir/mars_rover/MyString.cpp.obj: CXX_COMPILER__CSCE120_
 #############################################
 # Link the executable CSCE120.exe
 
-build CSCE120.exe: CXX_EXECUTABLE_LINKER__CSCE120_Debug CMakeFiles/CSCE120.dir/mars_rover/RoverTest.cpp.obj CMakeFiles/CSCE120.dir/mars_rover/Rover.cpp.obj CMakeFiles/CSCE120.dir/mars_rover/MyString.cpp.obj
+build CSCE120.exe: CXX_EXECUTABLE_LINKER__CSCE120_Debug CMakeFiles/CSCE120.dir/image_manipulation/Pixel.cpp.obj CMakeFiles/CSCE120.dir/image_manipulation/manip.cpp.obj CMakeFiles/CSCE120.dir/image_manipulation/Image.cpp.obj CMakeFiles/CSCE120.dir/image_manipulation/functions.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\CSCE120.dir
