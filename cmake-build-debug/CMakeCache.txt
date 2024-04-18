@@ -251,12 +251,6 @@ CSCE120_IS_TOP_LEVEL:STATIC=ON
 //Value Computed by CMake
 CSCE120_SOURCE_DIR:STATIC=C:/Users/tenant/CLionProjects/CSCE120
 
-//The directory containing a CMake configuration file for SFML.
-SFML_DIR:PATH=C:/Users/tenant/Downloads/SFML-2.6.1-windows-vc17-64-bit/SFML-2.6.1/lib/cmake/SFML
-
-//Path to a file.
-SFML_DOC_DIR:PATH=SFML_DOC_DIR-NOTFOUND
-
 
 ########################
 # INTERNAL cache entries
@@ -271,9 +265,9 @@ CMAKE_CACHEFILE_DIR:INTERNAL=c:/Users/tenant/CLionProjects/CSCE120/cmake-build-d
 //Major version of cmake used to create the current loaded cache
 CMAKE_CACHE_MAJOR_VERSION:INTERNAL=3
 //Minor version of cmake used to create the current loaded cache
-CMAKE_CACHE_MINOR_VERSION:INTERNAL=27
+CMAKE_CACHE_MINOR_VERSION:INTERNAL=28
 //Patch version of cmake used to create the current loaded cache
-CMAKE_CACHE_PATCH_VERSION:INTERNAL=8
+CMAKE_CACHE_PATCH_VERSION:INTERNAL=1
 //Path to CMake executable.
 CMAKE_COMMAND:INTERNAL=C:/Users/tenant/AppData/Local/Programs/CLion/bin/cmake/win/x64/bin/cmake.exe
 //Path to cpack program executable.
@@ -385,7 +379,7 @@ CMAKE_RC_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_READELF
 CMAKE_READELF-ADVANCED:INTERNAL=1
 //Path to CMake installation.
-CMAKE_ROOT:INTERNAL=C:/Users/tenant/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-3.27
+CMAKE_ROOT:INTERNAL=C:/Users/tenant/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-3.28
 //ADVANCED property for variable: CMAKE_SHARED_LINKER_FLAGS
 CMAKE_SHARED_LINKER_FLAGS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_SHARED_LINKER_FLAGS_DEBUG

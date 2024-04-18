@@ -66,6 +66,7 @@ public:
     }
 
     friend ostream &operator<<(ostream &os, const vector &v);
+
 };
 
 

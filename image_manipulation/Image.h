@@ -45,6 +45,7 @@ public:
     void addColor(Pixel p);
 
     void output(std::string filename);
+
 };
 
 # endif

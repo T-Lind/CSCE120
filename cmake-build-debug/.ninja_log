@@ -1,24 +1,3 @@
 # ninja log v5
-744	1198	7349262435610474	CSCE120.exe	884ddde9f214e5b8
-0	167	7349925617219205	build.ninja	99e288cfc5f75395
-3	566	7319665887880383	CMakeFiles/CSCE120.dir/linear_transformations/main.cpp.obj	68e52fedf14b7069
-6	594	7319776888604277	CMakeFiles/CSCE120.dir/dungeon_crawler/helper.cpp.obj	7efe636a3de54b48
-3	331	7319790598955891	CMakeFiles/CSCE120.dir/dungeon_crawler/logic.cpp.obj	8728743a2feccf78
-3	346	7319782230086809	CMakeFiles/CSCE120.dir/dungeon_crawler/dungeoncrawler.cpp.obj	b7482d630af42917
-2	461	7325583030465138	CMakeFiles/CSCE120.dir/ex7.cpp.obj	fb22db2d6d1df8ae
-0	384	7325584369428374	CMakeFiles/CSCE120.dir/in_class_example_9/ex7.cpp.obj	21dafb122388dd27
-1	451	7327333690554981	CMakeFiles/CSCE120.dir/mobile_phone/mobile_phone.cpp.obj	2c0133ae0c324919
-7	453	7327333690554981	CMakeFiles/CSCE120.dir/mobile_phone/main.cpp.obj	c702f93ab4f47557
-2	330	7339607573566452	CMakeFiles/CSCE120.dir/exam_2_study/Exam2Study.cpp.obj	7b2558026ea4a7fe
-14	714	7346402495139346	CMakeFiles/CSCE120.dir/crazy_8s/Card.cpp.obj	9be8af16f8402301
-2	582	7348908049256660	CMakeFiles/CSCE120.dir/crazy_8s/main.cpp.obj	81b4e6d39eaab7ee
-2	490	7348915255410923	CMakeFiles/CSCE120.dir/crazy_8s/Player.cpp.obj	b443cddec08fe359
-6	689	7348908050311404	CMakeFiles/CSCE120.dir/crazy_8s/Game.cpp.obj	5ef63b3174540f88
-8	739	7349262431036578	CMakeFiles/CSCE120.dir/mars_rover/Rover.cpp.obj	8e04978110652f58
-4	742	7349262431046595	CMakeFiles/CSCE120.dir/mars_rover/RoverTest.cpp.obj	9c998a9726fa608
-1	743	7349262431046595	CMakeFiles/CSCE120.dir/mars_rover/MyString.cpp.obj	b5f2dff60d61f0a6
-1	610	7349930849103144	CMakeFiles/CSCE120.dir/image_manipulation/Pixel.cpp.obj	1c4123c6304acfe3
-32	612	7349930849113155	CMakeFiles/CSCE120.dir/image_manipulation/manip.cpp.obj	becdb33b29b2d887
-39	639	7349930849401321	CMakeFiles/CSCE120.dir/image_manipulation/functions.cpp.obj	390c6e48826dea48
-36	644	7349930849451326	CMakeFiles/CSCE120.dir/image_manipulation/Image.cpp.obj	610a4c3a6d6f05f7
 644	1027	7349930853238969	CSCE120.exe	66c62a470ea919fa
+0	167	7351512661123468	build.ninja	99e288cfc5f75395
