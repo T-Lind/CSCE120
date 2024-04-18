@@ -6,4 +6,5 @@ set(CMAKE_CXX_STANDARD 17)
 add_executable(CSCE120
         op_overload/vector.cpp
         list/list.h
+        pointers/pointers.cpp
 )
