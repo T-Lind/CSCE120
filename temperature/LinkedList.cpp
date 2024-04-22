@@ -2,6 +2,8 @@
 # include <string>
 # include "LinkedList.h"
 # include "Node.h"
+#include <sstream>
+#include <cmath>
 
 using std::string, std::ostream;
 
@@ -80,19 +82,20 @@ Node* LinkedList::getHead() const {
 	// TODO: implement this function, it will be used to help grade other functions
     return head;
 }
-
 string LinkedList::print() const {
-	string outputString;
+    std::ostringstream outputString;
 
-	// TODO: implement this function
     // Go through and print each node
     Node* current = head;
     while (current != nullptr) {
-        outputString += current->data.id + " " + std::to_string(current->data.year) + " " + std::to_string(current->data.month) + " " + std::to_string(current->data.temperature) + "\n";
+        outputString << current->data.id << " " << current->data.year << " " << current->data.month << " ";
+        // Manually format the temperature to one digit after the decimal point
+        double roundedTemperature = round(current->data.temperature * 10) / 10;
+        outputString << roundedTemperature << "\n";
         current = current->next;
     }
 
-	return outputString;
+    return outputString.str();
 }
 
 ostream& operator<<(ostream& os, const LinkedList& ll) {

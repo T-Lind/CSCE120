@@ -19,6 +19,10 @@ class LinkedList {
 		void clear(); // clear the content of this linked list
 		std::string print() const;
 		Node* getHead() const;
+
+    double calculateAverage(const std::string &id, int year1, int year2);
+
+    int calculateMode(const std::string &id, int year1, int year2);
 };
 
 std::ostream& operator<<(std::ostream& os, const LinkedList& ll);
