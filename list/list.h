@@ -132,6 +132,18 @@ public:
         return data;
     }
 
+    void insertBefore(listNode *node, string data) {
+        listNode *newNode = new listNode(data);
+        if (node == head) {
+            prepend(data);
+        } else {
+            newNode->next = node;
+            newNode->prev = node->prev;
+            node->prev->next = newNode;
+            node->prev = newNode;
+        }
+    }
+
     void insertAfter(listNode *insertAfterNode, string data) { // O(1)
         if (insertAfterNode == nullptr) {
             insertAfterNode = head;
@@ -173,7 +185,7 @@ public:
         }
     }
 
-    listNode *find(const string& string_to_find) {
+    listNode *find(const string &string_to_find) {
         for (listNode *searchNode = head; searchNode != nullptr; searchNode = searchNode->next) {
             if (searchNode->data == string_to_find) {
                 return searchNode;

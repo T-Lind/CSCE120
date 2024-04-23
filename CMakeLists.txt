@@ -12,4 +12,5 @@ add_executable(CSCE120
         temperature/Node.cpp
         temperature/TemperatureDatabase.cpp
         temperature/TemperatureData.cpp
+        list/list.h
 )
