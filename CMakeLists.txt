@@ -4,6 +4,7 @@ project(CSCE120)
 set(CMAKE_CXX_STANDARD 17)
 
 add_executable(CSCE120
-        linked_list/linked_list.h
-        linked_list/linked_list.cpp
+        final/main.cpp
+        final/Animal.h
+        final/Animal.cpp
 )
