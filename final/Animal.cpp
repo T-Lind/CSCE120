@@ -19,3 +19,8 @@ Dog::Dog(int age) : Animal("Dog", age) {}
 void Dog::eat() { setHealth(getHealth() + 5); }
 void Dog::run() { setHealth(getHealth() - 5); }
 void Dog::newBirthday() { age += 1; }
+void Dog::setHealth(int health) {
+    if (health < 0) { Animal::setHealth(0); }
+    else if (health > 10) { Animal::setHealth(10); }
+    else { Animal::setHealth(health); }
+}

@@ -17,7 +17,7 @@ public:
     int getAge();
     void setAge(int age);
 
-    void setHealth(int health);
+    virtual void setHealth(int health);
     int getHealth();
 
     string getName() { return name; }
@@ -35,6 +35,8 @@ public:
     void eat() override;
     void run();
     void newBirthday();
+    void setHealth(int health) override;
+    virtual ~Dog() = default;
 };
 
 
