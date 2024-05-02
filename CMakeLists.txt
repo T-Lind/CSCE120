@@ -5,7 +5,4 @@ set(CMAKE_CXX_STANDARD 17)
 
 add_executable(CSCE120
         exam_2_reflection/main.cpp
-        final/LinkedList.cpp
-        final/LinkedList.cpp
-        final/LinkedList.h
 )

@@ -55,12 +55,6 @@ build CMakeFiles/CSCE120.dir/exam_2_reflection/main.cpp.obj: CXX_COMPILER__CSCE1
   OBJECT_DIR = CMakeFiles\CSCE120.dir
   OBJECT_FILE_DIR = CMakeFiles\CSCE120.dir\exam_2_reflection
 
-build CMakeFiles/CSCE120.dir/final/LinkedList.cpp.obj: CXX_COMPILER__CSCE120_unscanned_Debug C$:/Users/tenant/CLionProjects/CSCE120/final/LinkedList.cpp || cmake_object_order_depends_target_CSCE120
-  DEP_FILE = CMakeFiles\CSCE120.dir\final\LinkedList.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles\CSCE120.dir
-  OBJECT_FILE_DIR = CMakeFiles\CSCE120.dir\final
-
 
 # =============================================================================
 # Link build statements for EXECUTABLE target CSCE120
@@ -69,7 +63,7 @@ build CMakeFiles/CSCE120.dir/final/LinkedList.cpp.obj: CXX_COMPILER__CSCE120_uns
 #############################################
 # Link the executable CSCE120.exe
 
-build CSCE120.exe: CXX_EXECUTABLE_LINKER__CSCE120_Debug CMakeFiles/CSCE120.dir/exam_2_reflection/main.cpp.obj CMakeFiles/CSCE120.dir/final/LinkedList.cpp.obj
+build CSCE120.exe: CXX_EXECUTABLE_LINKER__CSCE120_Debug CMakeFiles/CSCE120.dir/exam_2_reflection/main.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\CSCE120.dir
